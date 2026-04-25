@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SGM Auto Group — О компании</title>
+
+    <link rel="icon" type="image/svg+xml" href="./assets/site/logo.svg" />
+    <link rel="apple-touch-icon" href="./assets/site/logo.svg" />
+
+    <!-- Fonts: Jost (allowed weights/italics only) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="./assets/theme.css?v=4" />
+    <link rel="stylesheet" href="./assets/presentation.css?v=4" />
+  </head>
+
+  <body class="presentation">
+    <div class="bg" aria-hidden="true"></div>
+    <div class="topline" aria-hidden="true"></div>
+
+    <main class="stage" aria-label="Презентация: о компании">
+      <section class="slide" id="slide" aria-live="polite">
+        <div class="slide__inner">
+          <div class="kicker" id="kicker">
+            <span class="kicker__dot" aria-hidden="true"></span><span data-kicker-label>Раздел</span>
+          </div>
+          <h1 id="title">Заголовок</h1>
+          <p class="text" id="body">Текст</p>
+          <div class="extra" id="extra"></div>
+        </div>
+      </section>
+    </main>
+
+    <nav class="nav" aria-label="Навигация по слайдам">
+      <div class="nav__bar">
+        <div class="nav__counter">
+          <div class="counter" id="counter">1 / 1</div>
+        </div>
+        <div class="nav__left">
+          <button class="btn" id="btnBack" type="button">Назад</button>
+        </div>
+        <div class="nav__center">
+          <button class="btn btn--accent" id="btnNext" type="button">Далее</button>
+        </div>
+        <div class="nav__right">
+          <a class="btn link" href="./index.html">На главную</a>
+        </div>
+      </div>
+    </nav>
+
+    <script>
+      // IMPORTANT: text placeholders only — keep as-is (architecture > content)
+      window.PRESENTATION_CONFIG = {
+        sectionTitle: "О компании",
+        slides: [
+          { title: "Слайд 1 — Заглушка", body: "Текст-заглушка. Одна мысль на экран." },
+          { title: "Слайд 2 — Заглушка", body: "Текст-заглушка. Одна мысль на экран." },
+          { title: "Слайд 3 — Заглушка", body: "Текст-заглушка. Одна мысль на экран." }
+        ]
+      };
+    </script>
+    <script src="./assets/js/app.js?v=4" defer></script>
+  </body>
+</html>
+

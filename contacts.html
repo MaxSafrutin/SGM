@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SGM Auto Group — Контакты</title>
+
+    <link rel="icon" type="image/svg+xml" href="./assets/site/logo.svg" />
+    <link rel="apple-touch-icon" href="./assets/site/logo.svg" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="./assets/theme.css?v=4" />
+    <link rel="stylesheet" href="./assets/presentation.css?v=4" />
+  </head>
+
+  <body class="presentation">
+    <div class="bg" aria-hidden="true"></div>
+    <div class="topline" aria-hidden="true"></div>
+
+    <main class="stage" aria-label="Презентация: контакты">
+      <section class="slide" id="slide" aria-live="polite">
+        <div class="slide__inner">
+          <div class="kicker" id="kicker">
+            <span class="kicker__dot" aria-hidden="true"></span><span data-kicker-label>Раздел</span>
+          </div>
+          <h1 id="title">Заголовок</h1>
+          <p class="text" id="body">Текст</p>
+          <div class="extra" id="extra"></div>
+        </div>
+      </section>
+    </main>
+
+    <nav class="nav" aria-label="Навигация по слайдам">
+      <div class="nav__bar">
+        <div class="nav__counter">
+          <div class="counter" id="counter">1 / 1</div>
+        </div>
+        <div class="nav__left">
+          <button class="btn" id="btnBack" type="button">Назад</button>
+        </div>
+        <div class="nav__center">
+          <button class="btn btn--accent" id="btnNext" type="button">Далее</button>
+        </div>
+        <div class="nav__right">
+          <a class="btn link" href="./index.html">На главную</a>
+        </div>
+      </div>
+    </nav>
+
+    <script>
+      window.PRESENTATION_CONFIG = {
+        sectionTitle: "Контакты",
+        slides: [
+          {
+            title: "Максим Сафрутин",
+            body: "Менеджер по продажам",
+            extraHtml: `
+              <div class="infoGrid">
+                <div class="infoItem">
+                  <span class="infoItem__label">Компания</span>
+                  <div class="infoItem__value">СГМ Авто Групп (параллельный импорт)</div>
+                </div>
+              </div>
+            `
+          },
+          {
+            title: "Контакты",
+            body: "+79272651777 / +79016285661 / m.safrutin@sgmautogroup.ru",
+            extraHtml: `
+              <div class="infoGrid">
+                <div class="infoItem">
+                  <span class="infoItem__label">Мобильный</span>
+                  <div class="infoItem__value"><a href="tel:+79272651777">+79272651777</a></div>
+                </div>
+                <div class="infoItem">
+                  <span class="infoItem__label">Рабочий</span>
+                  <div class="infoItem__value"><a href="tel:+79016285661">+79016285661</a></div>
+                </div>
+                <div class="infoItem">
+                  <span class="infoItem__label">Email</span>
+                  <div class="infoItem__value"><a href="mailto:m.safrutin@sgmautogroup.ru">m.safrutin@sgmautogroup.ru</a></div>
+                </div>
+              </div>
+            `
+          },
+          {
+            title: "Записать себе в контакты",
+            body: "Буду рад продолжить работу вместе!",
+            extraHtml: `
+              <div class="actionRow">
+                <a class="btn btn--accent" href="./assets/downloads/Dobavit%20v%20kontakty.vcf" download>
+                  Записать себе в контакты
+                </a>
+              </div>
+            `
+          }
+        ]
+      };
+    </script>
+    <script src="./assets/js/app.js?v=4" defer></script>
+  </body>
+</html>
