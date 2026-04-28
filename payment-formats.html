@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>SGM Auto Group — Форматы оплаты</title>
 
-    <link rel="icon" type="image/svg+xml" href="./assets/site/logo.svg" />
-    <link rel="apple-touch-icon" href="./assets/site/logo.svg" />
+    <link rel="icon" type="image/svg+xml" href="./assets/site/icon.svg" />
+    <link rel="apple-touch-icon" href="./assets/site/icon.svg" />
 
     <!-- Fonts: Jost (allowed weights/italics only) -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -16,8 +16,8 @@
       rel="stylesheet"
     />
 
-    <link rel="stylesheet" href="./assets/theme.css?v=4" />
-    <link rel="stylesheet" href="./assets/presentation.css?v=4" />
+    <link rel="stylesheet" href="./assets/theme.css?v=6" />
+    <link rel="stylesheet" href="./assets/presentation.css?v=10" />
   </head>
 
   <body class="presentation">
@@ -61,26 +61,11 @@
         sectionTitle: "Форматы оплаты",
         slides: [
           {
-            title: "Выберите сценарий",
-            body: "Текст-заглушка. Одна мысль на экран.",
+            title: "Раздел в работе",
+            body: "Сценарии оплаты готовим для интерактивного просмотра. Пока детали лучше разобрать через менеджера.",
             extraHtml: `
-              <div class="choiceGrid" role="list">
-                <button class="choiceBtn" type="button" data-go="1" role="listitem">
-                  <strong>Сценарий A</strong>
-                  <span>Текст-заглушка. Одна мысль на экран.</span>
-                </button>
-                <button class="choiceBtn" type="button" data-go="2" role="listitem">
-                  <strong>Сценарий B</strong>
-                  <span>Текст-заглушка. Одна мысль на экран.</span>
-                </button>
-                <button class="choiceBtn" type="button" data-go="3" role="listitem">
-                  <strong>Сценарий C</strong>
-                  <span>Текст-заглушка. Одна мысль на экран.</span>
-                </button>
-                <button class="choiceBtn" type="button" data-go="4" role="listitem">
-                  <strong>Сценарий D</strong>
-                  <span>Текст-заглушка. Одна мысль на экран.</span>
-                </button>
+              <div class="actionRow">
+                <button class="btn btn--accent" type="button" data-home-view="managerContacts">Контакты вашего менеджера</button>
               </div>
             `
           },
@@ -91,7 +76,7 @@
         ]
       };
     </script>
-    <script src="./assets/js/app.js?v=4" defer></script>
+    <script src="./assets/js/app.js?v=10" defer></script>
   </body>
 </html>
 

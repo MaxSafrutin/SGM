@@ -1,11 +1,15 @@
 BEGIN:VCARD
 VERSION:3.0
+N:Сафрутин;Максим;;;
 FN:Максим Сафрутин
-ORG:СГМ Авто Групп (параллельный импорт)
-TITLE:Менеджер по продажам
+ORG:СГМ АВТО ГРУПП
+TITLE:Менеджер отдела продаж
+TEL;TYPE=WORK,VOICE:+79016285661
+TEL;TYPE=WORK:+79272961107
 TEL;TYPE=CELL:+79272651777
-TEL;TYPE=WORK:+79016285661
-EMAIL;TYPE=WORK:m.safrutin@sgmautogroup.ru
-NOTE:Буду рад продолжить работу вместе!
-REV:20240420T120000Z
+TEL;TYPE=WORK,VOICE:88002220032
+EMAIL;TYPE=INTERNET,WORK:m.safrutin@sgmautogroup.ru
+URL:https://sgmautogroup.ru/
+NOTE:Telegram: https://t.me/max_safrutin | Max: https://max.ru/u/f9LHodD0cOKgZ2JizGOkGFarK61dFBSM_z1p5ADsR4gFp5qC4QzP6z8ShJE
+REV:20260427T120000Z
 END:VCARD

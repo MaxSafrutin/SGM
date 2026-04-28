@@ -3,10 +3,10 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>SGM Auto Group — Вопросы и ответы</title>
+    <title>SGM Auto Group — Важные нюансы</title>
 
-    <link rel="icon" type="image/svg+xml" href="./assets/site/logo.svg" />
-    <link rel="apple-touch-icon" href="./assets/site/logo.svg" />
+    <link rel="icon" type="image/svg+xml" href="./assets/site/icon.svg" />
+    <link rel="apple-touch-icon" href="./assets/site/icon.svg" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -15,15 +15,15 @@
       rel="stylesheet"
     />
 
-    <link rel="stylesheet" href="./assets/theme.css?v=4" />
-    <link rel="stylesheet" href="./assets/presentation.css?v=4" />
+    <link rel="stylesheet" href="./assets/theme.css?v=6" />
+    <link rel="stylesheet" href="./assets/presentation.css?v=10" />
   </head>
 
   <body class="presentation">
     <div class="bg" aria-hidden="true"></div>
     <div class="topline" aria-hidden="true"></div>
 
-    <main class="stage" aria-label="Презентация: вопросы и ответы">
+    <main class="stage" aria-label="Презентация: важные нюансы">
       <section class="slide" id="slide" aria-live="polite">
         <div class="slide__inner">
           <div class="kicker" id="kicker">
@@ -55,14 +55,22 @@
 
     <script>
       window.PRESENTATION_CONFIG = {
-        sectionTitle: "Вопросы и ответы",
+        sectionTitle: "Важные нюансы",
         slides: [
-          { title: "Слайд 1 — Заглушка", body: "Текст-заглушка. Одна мысль на экран." },
+          {
+            title: "Раздел в работе",
+            body: "Ведутся технические работы. Пока подробности по нюансам лучше уточнить у вашего менеджера.",
+            extraHtml: `
+              <div class="actionRow">
+                <button class="btn btn--accent" type="button" data-home-view="managerContacts">Контакты вашего менеджера</button>
+              </div>
+            `
+          },
           { title: "Слайд 2 — Заглушка", body: "Текст-заглушка. Одна мысль на экран." },
           { title: "Слайд 3 — Заглушка", body: "Текст-заглушка. Одна мысль на экран." }
         ]
       };
     </script>
-    <script src="./assets/js/app.js?v=4" defer></script>
+    <script src="./assets/js/app.js?v=10" defer></script>
   </body>
 </html>
