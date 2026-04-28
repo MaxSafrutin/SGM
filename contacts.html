@@ -3,10 +3,39 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>SGM Auto Group — Контакты</title>
+    <meta name="theme-color" content="#0a0a0a" />
+    <meta name="color-scheme" content="dark" />
+    <meta name="robots" content="index,follow,max-image-preview:large" />
 
-    <link rel="icon" type="image/svg+xml" href="./assets/site/logo.svg" />
-    <link rel="apple-touch-icon" href="./assets/site/logo.svg" />
+    <title>Максим Сафрутин</title>
+    <meta
+      name="description"
+      content="ООО &quot;СГМ АВТО ГРУПП&quot;, менеджер отдела продаж. Телефон, Telegram, Max, VK и быстрое сохранение контакта."
+    />
+
+    <link rel="canonical" href="./contacts.html" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="ru_RU" />
+    <meta property="og:title" content="Максим Сафрутин" />
+    <meta
+      property="og:description"
+      content="ООО &quot;СГМ АВТО ГРУПП&quot;, менеджер отдела продаж. Телефон, Telegram, Max, VK и быстрое сохранение контакта."
+    />
+    <meta property="og:image" content="./assets/site/avatar_safrutin_pro.png" />
+    <meta property="og:image:alt" content="Максим Сафрутин, ООО &quot;СГМ АВТО ГРУПП&quot;" />
+    <meta property="og:site_name" content="SGM Auto Group" />
+
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Максим Сафрутин" />
+    <meta
+      name="twitter:description"
+      content="ООО &quot;СГМ АВТО ГРУПП&quot;, менеджер отдела продаж. Телефон, Telegram, Max, VK и быстрое сохранение контакта."
+    />
+    <meta name="twitter:image" content="./assets/site/avatar_safrutin_pro.png" />
+
+    <link rel="icon" type="image/svg+xml" href="./assets/site/icon.svg" />
+    <link rel="apple-touch-icon" href="./assets/site/icon.svg" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -15,94 +44,162 @@
       rel="stylesheet"
     />
 
-    <link rel="stylesheet" href="./assets/theme.css?v=4" />
-    <link rel="stylesheet" href="./assets/presentation.css?v=4" />
+    <link rel="stylesheet" href="./assets/theme.css?v=6" />
+    <link rel="stylesheet" href="./assets/home.css?v=10" />
+    <script src="./assets/js/app.js?v=10" defer></script>
   </head>
 
-  <body class="presentation">
+  <body>
     <div class="bg" aria-hidden="true"></div>
     <div class="topline" aria-hidden="true"></div>
 
-    <main class="stage" aria-label="Презентация: контакты">
-      <section class="slide" id="slide" aria-live="polite">
-        <div class="slide__inner">
-          <div class="kicker" id="kicker">
-            <span class="kicker__dot" aria-hidden="true"></span><span data-kicker-label>Раздел</span>
+    <main class="wrap">
+      <section class="card" aria-label="Контакты Максима Сафрутина">
+        <div class="card__body">
+          <div class="contactSheet">
+            <div class="contactHero">
+              <img class="contactAvatar" src="./assets/site/avatar_safrutin_pro.png" alt="Максим Сафрутин" />
+              <div class="contactHero__content">
+                <h1 class="contactName">Максим Сафрутин</h1>
+                <p class="contactRole">Менеджер отдела продаж</p>
+                <a class="contactCompany contactCompanyLink" href="./index.html">ООО "СГМ АВТО ГРУПП"</a>
+              </div>
+            </div>
+
+            <div class="contactTopActions">
+              <a class="modalAction modalAction--accent modalAction--no-shine" href="./assets/downloads/Dobavit%20v%20kontakty.vcf" download>
+                <span class="modalAction__icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M15 19a6 6 0 0 0-12 0"></path>
+                    <circle cx="9" cy="7" r="4"></circle>
+                    <path d="M19 8v6"></path>
+                    <path d="M16 11h6"></path>
+                  </svg>
+                </span>
+                <span>Сохранить в контакты</span>
+              </a>
+              <button class="modalAction modalAction--shareAction" type="button" data-contact-share aria-label="Поделиться карточкой">
+                <span class="modalAction__icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 3v12"></path>
+                    <path d="m7 8 5-5 5 5"></path>
+                    <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-7"></path>
+                  </svg>
+                </span>
+                <span>Поделиться</span>
+              </button>
+            </div>
+
+            <div class="contactMethod contactMethod--primary">
+              <div class="contactMethod__main">
+                <a class="contactMethod__number" href="tel:+79016285661">+7 (901) 628-56-61</a>
+                <span class="contactMethod__label">Рабочий</span>
+              </div>
+              <div class="contactMethod__actions">
+                <a class="contactQuick" href="tel:+79016285661" aria-label="Позвонить" title="Позвонить" data-tooltip="Позвонить">
+                  <img src="./assets/site/phone-logo.svg" alt="" />
+                </a>
+                <a class="contactQuick" href="https://t.me/max_safrutin" target="_blank" rel="noreferrer noopener" aria-label="Telegram" title="Telegram" data-tooltip="Telegram">
+                  <img src="./assets/site/telegram-logo.svg" alt="" />
+                </a>
+                <a class="contactQuick" href="https://max.ru/u/f9LHodD0cOKgZ2JizGOkGFarK61dFBSM_z1p5ADsR4gFp5qC4QzP6z8ShJE" target="_blank" rel="noreferrer noopener" aria-label="Max" title="Max" data-tooltip="Max">
+                  <img src="./assets/site/logo_max.svg" alt="" />
+                </a>
+                <a class="contactQuick" href="https://vk.com/id1112271997" target="_blank" rel="noreferrer noopener" aria-label="VK" title="VK" data-tooltip="VK">
+                  <img src="./assets/site/vk-logo.svg" alt="" />
+                </a>
+              </div>
+            </div>
+
+            <div class="contactMethod contactMethod--email">
+              <div class="contactMethod__main">
+                <a class="contactMethod__number" href="mailto:m.safrutin@sgmautogroup.ru">m.safrutin@sgmautogroup.ru</a>
+                <span class="contactMethod__label">Почта</span>
+              </div>
+            </div>
+
+            <details class="contactAccordion">
+              <summary>
+                <span>Ещё контакты</span>
+                <span class="contactAccordion__chevron" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="m6 9 6 6 6-6"></path>
+                  </svg>
+                </span>
+              </summary>
+              <div class="contactAccordion__body">
+                <div class="contactMethod">
+                  <div class="contactMethod__main">
+                    <a class="contactMethod__number" href="tel:+79272961107">+7 (927) 296-11-07</a>
+                    <span class="contactMethod__label">Доп. рабочий</span>
+                  </div>
+                  <div class="contactMethod__actions">
+                    <a class="contactQuick" href="tel:+79272961107" aria-label="Позвонить" title="Позвонить" data-tooltip="Позвонить">
+                      <img src="./assets/site/phone-logo.svg" alt="" />
+                    </a>
+                    <a class="contactQuick" href="https://t.me/max_safrutin" target="_blank" rel="noreferrer noopener" aria-label="Telegram" title="Telegram" data-tooltip="Telegram">
+                      <img src="./assets/site/telegram-logo.svg" alt="" />
+                    </a>
+                    <a class="contactQuick" href="https://max.ru/u/f9LHodD0cOKgZ2JizGOkGFarK61dFBSM_z1p5ADsR4gFp5qC4QzP6z8ShJE" target="_blank" rel="noreferrer noopener" aria-label="Max" title="Max" data-tooltip="Max">
+                      <img src="./assets/site/logo_max.svg" alt="" />
+                    </a>
+                  </div>
+                </div>
+
+                <div class="contactMethod">
+                  <div class="contactMethod__main">
+                    <a class="contactMethod__number" href="tel:+79272651777">+7 (927) 265-17-77</a>
+                    <span class="contactMethod__label">Личный</span>
+                  </div>
+                  <div class="contactMethod__actions">
+                    <a class="contactQuick" href="tel:+79272651777" aria-label="Позвонить" title="Позвонить" data-tooltip="Позвонить">
+                      <img src="./assets/site/phone-logo.svg" alt="" />
+                    </a>
+                    <a class="contactQuick" href="https://t.me/max_safrutin" target="_blank" rel="noreferrer noopener" aria-label="Telegram" title="Telegram" data-tooltip="Telegram">
+                      <img src="./assets/site/telegram-logo.svg" alt="" />
+                    </a>
+                    <a class="contactQuick" href="https://max.ru/u/f9LHodD0cOKgZ2JizGOkGFarK61dFBSM_z1p5ADsR4gFp5qC4QzP6z8ShJE" target="_blank" rel="noreferrer noopener" aria-label="Max" title="Max" data-tooltip="Max">
+                      <img src="./assets/site/logo_max.svg" alt="" />
+                    </a>
+                    <a class="contactQuick" href="https://vk.com/max_safrutin" target="_blank" rel="noreferrer noopener" aria-label="VK" title="VK" data-tooltip="VK">
+                      <img src="./assets/site/vk-logo.svg" alt="" />
+                    </a>
+                  </div>
+                </div>
+
+                <div class="contactMethod">
+                  <div class="contactMethod__main">
+                    <a class="contactMethod__number" href="tel:88002220032">8 (800) 222-00-32</a>
+                    <span class="contactMethod__label">Горячая линия</span>
+                  </div>
+                  <div class="contactMethod__actions">
+                    <a class="contactQuick" href="tel:88002220032" aria-label="Позвонить" title="Позвонить" data-tooltip="Позвонить">
+                      <img src="./assets/site/phone-logo.svg" alt="" />
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </details>
+
+            <div class="modalActions">
+              <a class="modalAction modalAction--accent modalAction--presentation" href="./index.html">
+                <span class="modalAction__icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M4 5h16v10H4z"></path>
+                    <path d="M12 15v4"></path>
+                    <path d="M9 19h6"></path>
+                    <path d="M8 9h8"></path>
+                  </svg>
+                </span>
+                <span class="modalAction__text">
+                  <strong>О компании и сделках</strong>
+                  <small>ИНТЕРАКТИВНАЯ ПРЕЗЕНТАЦИЯ</small>
+                </span>
+              </a>
+            </div>
           </div>
-          <h1 id="title">Заголовок</h1>
-          <p class="text" id="body">Текст</p>
-          <div class="extra" id="extra"></div>
         </div>
       </section>
     </main>
-
-    <nav class="nav" aria-label="Навигация по слайдам">
-      <div class="nav__bar">
-        <div class="nav__counter">
-          <div class="counter" id="counter">1 / 1</div>
-        </div>
-        <div class="nav__left">
-          <button class="btn" id="btnBack" type="button">Назад</button>
-        </div>
-        <div class="nav__center">
-          <button class="btn btn--accent" id="btnNext" type="button">Далее</button>
-        </div>
-        <div class="nav__right">
-          <a class="btn link" href="./index.html">На главную</a>
-        </div>
-      </div>
-    </nav>
-
-    <script>
-      window.PRESENTATION_CONFIG = {
-        sectionTitle: "Контакты",
-        slides: [
-          {
-            title: "Максим Сафрутин",
-            body: "Менеджер по продажам",
-            extraHtml: `
-              <div class="infoGrid">
-                <div class="infoItem">
-                  <span class="infoItem__label">Компания</span>
-                  <div class="infoItem__value">СГМ Авто Групп (параллельный импорт)</div>
-                </div>
-              </div>
-            `
-          },
-          {
-            title: "Контакты",
-            body: "+79272651777 / +79016285661 / m.safrutin@sgmautogroup.ru",
-            extraHtml: `
-              <div class="infoGrid">
-                <div class="infoItem">
-                  <span class="infoItem__label">Мобильный</span>
-                  <div class="infoItem__value"><a href="tel:+79272651777">+79272651777</a></div>
-                </div>
-                <div class="infoItem">
-                  <span class="infoItem__label">Рабочий</span>
-                  <div class="infoItem__value"><a href="tel:+79016285661">+79016285661</a></div>
-                </div>
-                <div class="infoItem">
-                  <span class="infoItem__label">Email</span>
-                  <div class="infoItem__value"><a href="mailto:m.safrutin@sgmautogroup.ru">m.safrutin@sgmautogroup.ru</a></div>
-                </div>
-              </div>
-            `
-          },
-          {
-            title: "Записать себе в контакты",
-            body: "Буду рад продолжить работу вместе!",
-            extraHtml: `
-              <div class="actionRow">
-                <a class="btn btn--accent" href="./assets/downloads/Dobavit%20v%20kontakty.vcf" download>
-                  Записать себе в контакты
-                </a>
-              </div>
-            `
-          }
-        ]
-      };
-    </script>
-    <script src="./assets/js/app.js?v=4" defer></script>
   </body>
 </html>

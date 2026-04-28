@@ -4,9 +4,30 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>SGM Auto Group — презентация</title>
+    <meta
+      name="description"
+      content="Интерактивная презентация ООО &quot;СГМ АВТО ГРУПП&quot;: проверка компании, материалы по сделкам, санкционному импорту и контакты менеджера."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="ru_RU" />
+    <meta property="og:title" content="Интерактивная презентация ООО &quot;СГМ АВТО ГРУПП&quot;" />
+    <meta
+      property="og:description"
+      content="Проверка компании, PDF-материалы, сценарии сделок и контакты вашего менеджера в одном месте."
+    />
+    <meta property="og:image" content="./assets/site/logo.svg" />
+    <meta property="og:image:alt" content="ООО &quot;СГМ АВТО ГРУПП&quot;" />
+    <meta property="og:site_name" content="SGM Auto Group" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Интерактивная презентация ООО &quot;СГМ АВТО ГРУПП&quot;" />
+    <meta
+      name="twitter:description"
+      content="Проверка компании, PDF-материалы, сценарии сделок и контакты вашего менеджера."
+    />
+    <meta name="twitter:image" content="./assets/site/logo.svg" />
 
-    <link rel="icon" type="image/svg+xml" href="./assets/site/logo.svg" />
-    <link rel="apple-touch-icon" href="./assets/site/logo.svg" />
+    <link rel="icon" type="image/svg+xml" href="./assets/site/icon.svg" />
+    <link rel="apple-touch-icon" href="./assets/site/icon.svg" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -15,8 +36,8 @@
       rel="stylesheet"
     />
 
-    <link rel="stylesheet" href="./assets/theme.css?v=4" />
-    <link rel="stylesheet" href="./assets/home.css?v=4" />
+    <link rel="stylesheet" href="./assets/theme.css?v=6" />
+    <link rel="stylesheet" href="./assets/home.css?v=10" />
   </head>
 
   <body>
@@ -26,40 +47,40 @@
     <main class="wrap">
       <section class="card" aria-label="Меню презентаций">
         <div class="card__body">
-          <div class="brand">
-            <div class="logo" aria-label="SGM Auto Group">
-              <img class="logo__mark" src="./assets/site/logo.svg" alt="SGM Auto Group" />
-              <div class="logo__name">
-                <span>Архитектура безопасной сделки</span>
-              </div>
+          <div class="heroMeta">
+            <div class="fact">
+              <span class="fact__label">Общая выручка к 2025 г.</span>
+              <span class="fact__value">&gt;6,5 млрд ₽</span>
             </div>
 
             <button class="brand__action" id="btnVerifyCompany" type="button">
-              Проверить компанию
+              <span class="brand__actionIcon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="11" cy="11" r="7"></circle>
+                  <path d="m20 20-3.5-3.5"></path>
+                </svg>
+              </span>
+              <span>Проверить компанию</span>
             </button>
           </div>
 
-          <h1>Интерактивная презентация</h1>
+          <div class="heroTitle">
+            <img class="heroTitle__logo" src="./assets/site/logo.svg" alt="SGM Auto Group" />
+            <h1>Интерактивная презентация</h1>
+          </div>
+
           <p class="lead">
-            Импорт автомобилей с полным контролем логистики, необходиммых уплат, НДС и юридической
-            чистоты на каждом этапе
+            Про юридическую и финансовую безопасность с гибким подходом (логистика, НДС, таможня)
+            — ООО “СГМ АВТО ГРУПП”, ИНН 6312208990
           </p>
 
           <div id="sectionsList"></div>
-
-          <p class="lead" style="margin-top: 14px; margin-bottom: 0; font-size: 13px;">
-            <a
-              href="./ram-choice.html"
-              style="color: rgba(255,255,255,0.66); text-decoration: none; border-bottom: 1px solid rgba(255,255,255,0.12);"
-              >Как выбрать RAM (служебно)</a
-            >
-          </p>
         </div>
       </section>
     </main>
 
     <div class="modalRoot" id="homeModalRoot" hidden></div>
 
-    <script src="./assets/js/app.js?v=4" defer></script>
+    <script src="./assets/js/app.js?v=10" defer></script>
   </body>
 </html>

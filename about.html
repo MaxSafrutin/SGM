@@ -5,10 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>SGM Auto Group — О компании</title>
 
-    <link rel="icon" type="image/svg+xml" href="./assets/site/logo.svg" />
-    <link rel="apple-touch-icon" href="./assets/site/logo.svg" />
+    <link rel="icon" type="image/svg+xml" href="./assets/site/icon.svg" />
+    <link rel="apple-touch-icon" href="./assets/site/icon.svg" />
 
-    <!-- Fonts: Jost (allowed weights/italics only) -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -16,8 +15,9 @@
       rel="stylesheet"
     />
 
-    <link rel="stylesheet" href="./assets/theme.css?v=4" />
-    <link rel="stylesheet" href="./assets/presentation.css?v=4" />
+    <link rel="stylesheet" href="./assets/theme.css?v=6" />
+    <link rel="stylesheet" href="./assets/home.css?v=10" />
+    <link rel="stylesheet" href="./assets/presentation.css?v=10" />
   </head>
 
   <body class="presentation">
@@ -54,18 +54,406 @@
       </div>
     </nav>
 
+    <div class="modalRoot" id="homeModalRoot" hidden></div>
+
     <script>
-      // IMPORTANT: text placeholders only — keep as-is (architecture > content)
       window.PRESENTATION_CONFIG = {
         sectionTitle: "О компании",
         slides: [
-          { title: "Слайд 1 — Заглушка", body: "Текст-заглушка. Одна мысль на экран." },
-          { title: "Слайд 2 — Заглушка", body: "Текст-заглушка. Одна мысль на экран." },
-          { title: "Слайд 3 — Заглушка", body: "Текст-заглушка. Одна мысль на экран." }
+          {
+            title: "SGM Auto Group",
+            body: "",
+            extraHtml: `
+              <div class="aboutSplit">
+                <div class="aboutStack">
+                  <div class="aboutLogoPlate">
+                    <img src="./assets/site/logo.svg" alt="SGM Auto Group" />
+                  </div>
+                  <div class="aboutParagraph">
+                    Интерактивная презентационная ветка о компании, логистике, масштабе и безопасной архитектуре сделок.
+                  </div>
+                  <div class="actionRow">
+                    <button class="btn btn--accent" type="button" data-home-view="managerContacts">
+                      Контакты вашего менеджера
+                    </button>
+                  </div>
+                </div>
+                <div class="aboutVisual">
+                  <span class="aboutVisual__eyebrow">Образ</span>
+                  <strong class="aboutVisual__title">Премиальный тёмный гараж</strong>
+                  <span class="aboutVisual__note">Премиальные автомобили / логотип SGM / placeholder под фото обложки</span>
+                </div>
+              </div>
+            `
+          },
+          {
+            title: "О компании",
+            body: "ООО «СГМ АВТО ГРУПП» — надёжный партнёр в сфере импорта и экспорта товаров в Россию.",
+            extraHtml: `
+              <div class="aboutSplit">
+                <div class="aboutStack">
+                  <div class="aboutParagraph">Мы предлагаем широкий спектр услуг по доставке и таможенному оформлению продукции, обеспечивая высокое качество и оперативность работы.</div>
+                  <div class="aboutParagraph">Наша компания специализируется на параллельном импорте санкционных товаров.</div>
+                  <div class="aboutParagraph">Благодаря большому опыту работы с 2021 года, профессиональной команде специалистов и собственной цепочке платежных компаний, мы гарантируем безопасность и удобство проведения финансовых операций и доставки грузов.</div>
+                  <div class="aboutParagraph">Наши бизнес-процессы построены таким образом, чтобы обеспечить максимальную эффективность и оперативность работы.</div>
+                  <div class="aboutParagraph">Мы стремимся к тому, чтобы каждый наш клиент получил высококачественные услуги в кратчайшие сроки и при этом не переживал за сохранность денежных средств.</div>
+                </div>
+                <div class="aboutVisual">
+                  <span class="aboutVisual__eyebrow">Образ</span>
+                  <strong class="aboutVisual__title">Глобальная логистика</strong>
+                  <span class="aboutVisual__note">Карта мира / маршруты / международные поставки / placeholder под визуал</span>
+                </div>
+              </div>
+            `
+          },
+          {
+            title: "Содержание",
+            body: "Содержание:",
+            extraHtml: `
+              <div class="aboutSplit aboutSplit--equal">
+                <div class="aboutStack">
+                  <div class="choiceGrid">
+                    <button class="choiceBtn" type="button" data-go="3"><strong>Команда</strong><span>Штат, отделы и принципы взаимодействия</span></button>
+                    <button class="choiceBtn" type="button" data-go="4"><strong>Сфера деятельности</strong><span>Импорт автомобилей и ключевые преимущества</span></button>
+                    <button class="choiceBtn" type="button" data-go="5"><strong>Наши клиенты</strong><span>Кому поставляем автомобили и для каких задач</span></button>
+                    <button class="choiceBtn" type="button" data-go="6"><strong>Маркетинг</strong><span>Как компания привлекает и сопровождает клиентов</span></button>
+                    <button class="choiceBtn" type="button" data-go="8"><strong>Результат с 2021 года</strong><span>Ключевые цифры за 5 лет</span></button>
+                    <button class="choiceBtn" type="button" data-go="9"><strong>Логистика</strong><span>Проверенные маршруты и страхование</span></button>
+                    <button class="choiceBtn" type="button" data-go="10"><strong>Новые направления</strong><span>Расширение комплекса услуг</span></button>
+                    <button class="choiceBtn" type="button" data-go="11"><strong>Платежный агент</strong><span>Система безопасных финансовых операций</span></button>
+                  </div>
+                </div>
+                <div class="aboutVisual">
+                  <span class="aboutVisual__eyebrow">Образ</span>
+                  <strong class="aboutVisual__title">Порт и контейнеровоз</strong>
+                  <span class="aboutVisual__note">Контейнеры / автомобили / логистика / placeholder под визуал содержания</span>
+                </div>
+              </div>
+            `
+          },
+          {
+            title: "Команда",
+            body: "",
+            extraHtml: `
+              <div class="aboutSplit">
+                <div class="aboutStack">
+                  <div class="aboutQuote">«Когда все двигаются вперёд совместными усилиями, успех приходит сам собой», — Генри Форд.</div>
+                  <div class="aboutParagraph">Штат из 40 сотрудников в 8 отделах:</div>
+                  <div class="aboutGrid">
+                    <div class="aboutCard"><span class="aboutCard__kicker">01</span><span class="aboutCard__title">Отдел маркетинга</span></div>
+                    <div class="aboutCard"><span class="aboutCard__kicker">02</span><span class="aboutCard__title">Отдел продаж</span></div>
+                    <div class="aboutCard"><span class="aboutCard__kicker">03</span><span class="aboutCard__title">Отдел закупки</span></div>
+                    <div class="aboutCard"><span class="aboutCard__kicker">04</span><span class="aboutCard__title">Отдел юридического контроля</span></div>
+                    <div class="aboutCard"><span class="aboutCard__kicker">05</span><span class="aboutCard__title">Отдел делопроизводства</span></div>
+                    <div class="aboutCard"><span class="aboutCard__kicker">06</span><span class="aboutCard__title">Отдел логистики</span></div>
+                    <div class="aboutCard"><span class="aboutCard__kicker">07</span><span class="aboutCard__title">Отдел таможенного декларирования автомобилей</span></div>
+                    <div class="aboutCard"><span class="aboutCard__kicker">08</span><span class="aboutCard__title">Бухгалтерия</span></div>
+                  </div>
+                </div>
+                <div class="aboutVisual">
+                  <span class="aboutVisual__eyebrow">Образ</span>
+                  <strong class="aboutVisual__title">Корпоративная атмосфера</strong>
+                  <span class="aboutVisual__note">Команда / силуэты / внутренние процессы / placeholder под фото отдела</span>
+                </div>
+              </div>
+            `
+          },
+          {
+            title: "Основное направление",
+            body: "Импорт автомобилей из любой страны мира.",
+            extraHtml: `
+              <div class="aboutSplit">
+                <div class="aboutStack">
+                  <div class="aboutGrid">
+                    <div class="aboutCard">
+                      <span class="aboutCard__kicker">Доверяют благодаря</span>
+                      <span class="aboutCard__title">Своей платежной цепочки</span>
+                      <span class="aboutCard__text">Официальные платежи с регистрацией контракта</span>
+                    </div>
+                    <div class="aboutCard">
+                      <span class="aboutCard__kicker">Доверяют благодаря</span>
+                      <span class="aboutCard__title aboutCard__title--accent">Уплате всех налогов, пошлин и НДС 22%</span>
+                      <span class="aboutCard__text">Белый ввоз строго по законам РФ</span>
+                    </div>
+                    <div class="aboutCard">
+                      <span class="aboutCard__kicker">Доверяют благодаря</span>
+                      <span class="aboutCard__title aboutCard__title--accent">Работе без занижения инвойсовой стоимости</span>
+                      <span class="aboutCard__text">Нет рисков и последствий, связанных с налоговой</span>
+                    </div>
+                    <div class="aboutCard">
+                      <span class="aboutCard__kicker">Доверяют благодаря</span>
+                      <span class="aboutCard__title">Возможности заказа автомобиля по конфигуратору</span>
+                      <span class="aboutCard__text">Индивидуальная сборка, как до введения санкций</span>
+                    </div>
+                    <div class="aboutCard">
+                      <span class="aboutCard__kicker">Доверяют благодаря</span>
+                      <span class="aboutCard__title aboutCard__title--accent">Импорту от проверенных поставщиков</span>
+                      <span class="aboutCard__text">Каждый автомобиль проверен с полным отчетом</span>
+                    </div>
+                  </div>
+                  <div class="aboutParagraph">Мы предлагаем конкурентные условия поставки и обеспечиваем безопасность и сохранность автомобилей.</div>
+                  <div class="aboutParagraph">Учитывая все риски и трудности мы всегда стремимся минимизировать задержки и обеспечить высокий уровень обслуживания наших клиентов.</div>
+                </div>
+                <div class="aboutVisual">
+                  <span class="aboutVisual__eyebrow">Образ</span>
+                  <strong class="aboutVisual__title">Премиальный автомобиль</strong>
+                  <span class="aboutVisual__note">Range Rover / склад / выдача автомобиля / placeholder под фото</span>
+                </div>
+              </div>
+            `
+          },
+          {
+            title: "Наши клиенты",
+            body: "",
+            extraHtml: `
+              <div class="aboutSplit">
+                <div class="aboutGrid">
+                  <div class="aboutCard">
+                    <span class="aboutCard__kicker">01</span>
+                    <span class="aboutCard__title">Автодилеры</span>
+                    <span class="aboutCard__text">Мы поставляем автомобили для популярных автодилеров. Некоторые из которых крупные авто холдинги.</span>
+                  </div>
+                  <div class="aboutCard">
+                    <span class="aboutCard__kicker">02</span>
+                    <span class="aboutCard__title">Лизинговые компании</span>
+                    <span class="aboutCard__text">С нами работают и доверяют своих клиентов лизинговые компании.</span>
+                  </div>
+                  <div class="aboutCard">
+                    <span class="aboutCard__kicker">03</span>
+                    <span class="aboutCard__title">Юридические и физические лица</span>
+                    <span class="aboutCard__text">У нас заказывают и покупают автомобили компании, как для бизнеса, так и для личных целей.</span>
+                  </div>
+                  <div class="aboutCard">
+                    <span class="aboutCard__kicker">Ключевой партнер</span>
+                    <span class="aboutCard__title">Нейтральный блок под логотип / фото партнёра</span>
+                    <span class="aboutCard__text">Если в проект будут добавлены логотипы или фото выдачи, этот блок можно заменить без изменения структуры.</span>
+                  </div>
+                </div>
+                <div class="aboutVisual">
+                  <span class="aboutVisual__eyebrow">Образ</span>
+                  <strong class="aboutVisual__title">Клиенты и выдача автомобилей</strong>
+                  <span class="aboutVisual__note">Партнёры / клиенты / выдачи / placeholder под фото или карточки партнёров</span>
+                </div>
+              </div>
+            `
+          },
+          {
+            title: "Маркетинг",
+            body: "",
+            extraHtml: `
+              <div class="aboutSplit">
+                <div class="aboutStack">
+                  <div class="aboutParagraph">- Сайт с возможностью выбора автомобиля за рубежом</div>
+                  <div class="aboutParagraph">- 20 каналов лидогенерации, с разнообразным контентом</div>
+                  <div class="aboutParagraph">- Качественное оформление предложений и выдач для клиентов</div>
+                  <div class="aboutParagraph">- Контент с участием партнеров и контрагентов для привлечения внимания клиентов</div>
+                  <div class="aboutParagraph">- Участия в выставках и мероприятиях</div>
+                  <div class="aboutParagraph">- Коллаборации с детейлингами и брендами из других направлений</div>
+                  <div class="aboutParagraph">- Внешняя реклама в разных городах, для повышения узнаваемости бренда</div>
+                </div>
+                <div class="aboutVisual">
+                  <span class="aboutVisual__eyebrow">Образ</span>
+                  <strong class="aboutVisual__title">Digital и офлайн-маркетинг</strong>
+                  <span class="aboutVisual__note">Экран сайта / телефон / digital-каналы / placeholder под маркетинговый визуал</span>
+                </div>
+              </div>
+            `
+          },
+          {
+            title: "Статистика по отгруженным автомобилям",
+            body: "",
+            extraHtml: `
+              <div class="aboutSplit">
+                <div class="aboutStack">
+                  <div class="aboutSegmentBar" aria-hidden="true">
+                    <span class="aboutSegment aboutSegment--mass"></span>
+                    <span class="aboutSegment aboutSegment--commercial"></span>
+                    <span class="aboutSegment aboutSegment--premium"></span>
+                    <span class="aboutSegment aboutSegment--lux"></span>
+                  </div>
+                  <div class="aboutBarList">
+                    <div class="aboutBarRow">
+                      <div class="aboutBarRow__top"><span>Масс</span><strong>40.3%</strong></div>
+                      <div class="aboutBarTrack"><span class="aboutBarFill aboutBarFill--mass"></span></div>
+                    </div>
+                    <div class="aboutBarRow">
+                      <div class="aboutBarRow__top"><span>Коммерческий</span><strong>39.3%</strong></div>
+                      <div class="aboutBarTrack"><span class="aboutBarFill aboutBarFill--commercial"></span></div>
+                    </div>
+                    <div class="aboutBarRow">
+                      <div class="aboutBarRow__top"><span>Премиум</span><strong>19.3%</strong></div>
+                      <div class="aboutBarTrack"><span class="aboutBarFill aboutBarFill--premium"></span></div>
+                    </div>
+                    <div class="aboutBarRow">
+                      <div class="aboutBarRow__top"><span>Люкс</span><strong>1%</strong></div>
+                      <div class="aboutBarTrack"><span class="aboutBarFill aboutBarFill--lux"></span></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="aboutVisual">
+                  <span class="aboutVisual__eyebrow">Образ</span>
+                  <strong class="aboutVisual__title">Диаграмма и автомобили</strong>
+                  <span class="aboutVisual__note">Статистика / автомобили / placeholder под фото или инфографику</span>
+                </div>
+              </div>
+            `
+          },
+          {
+            title: "Цифры за 5 лет",
+            body: "",
+            extraHtml: `
+              <div class="aboutStatGrid">
+                <div class="aboutStatCard">
+                  <span class="aboutStatCard__value">4</span>
+                  <span class="aboutStatCard__label">аффилированных компании</span>
+                </div>
+                <div class="aboutStatCard">
+                  <span class="aboutStatCard__value">РФ, ОАЭ, РБ, КГЗ</span>
+                  <span class="aboutStatCard__label">география присутствия</span>
+                </div>
+                <div class="aboutStatCard">
+                  <span class="aboutStatCard__value">1261</span>
+                  <span class="aboutStatCard__label">проданных автомобилей</span>
+                </div>
+                <div class="aboutStatCard">
+                  <span class="aboutStatCard__value">40</span>
+                  <span class="aboutStatCard__label">штат сотрудников</span>
+                </div>
+                <div class="aboutStatCard">
+                  <span class="aboutStatCard__value">6.6 млрд руб</span>
+                  <span class="aboutStatCard__label">оборот</span>
+                </div>
+              </div>
+              <div class="aboutVisual">
+                <span class="aboutVisual__eyebrow">Образ</span>
+                <strong class="aboutVisual__title">Автовозы и логистика</strong>
+                <span class="aboutVisual__note">Маршруты / цифры / placeholder под итоговый визуальный блок</span>
+              </div>
+            `
+          },
+          {
+            title: "Логистика",
+            body: "",
+            extraHtml: `
+              <div class="aboutSplit">
+                <div class="aboutStack">
+                  <div class="aboutSteps">
+                    <div class="aboutStep">
+                      <span class="aboutStep__index">01</span>
+                      <div class="aboutStep__title">Оптимизированный и безопасный маршрут</div>
+                    </div>
+                    <div class="aboutStep">
+                      <span class="aboutStep__index">02</span>
+                      <div class="aboutStep__title">Отгрузка в день выпуска таможенной декларации</div>
+                    </div>
+                    <div class="aboutStep">
+                      <span class="aboutStep__index">03</span>
+                      <div class="aboutStep__title">Страхование автомобилей независимо от типа грузоперевозки</div>
+                    </div>
+                  </div>
+                  <div class="aboutParagraph">Благодаря большому количеству сделок наши маршруты проверены и отточены.</div>
+                  <div class="aboutParagraph">И даже на случай непредвиденных ситуаций у нас есть запасные логистические пути — это значит, что автомобиль прибудет со 100 % вероятностью.</div>
+                </div>
+                <div class="aboutVisual">
+                  <span class="aboutVisual__eyebrow">Образ</span>
+                  <strong class="aboutVisual__title">Порт и терминалы</strong>
+                  <span class="aboutVisual__note">Контейнеры / терминалы / маршруты / placeholder под логистический визуал</span>
+                </div>
+              </div>
+            `
+          },
+          {
+            title: "Развитие новых направлений",
+            body: "",
+            extraHtml: `
+              <div class="aboutSplit">
+                <div class="aboutStack">
+                  <div class="aboutSteps">
+                    <div class="aboutStep">
+                      <span class="aboutStep__index">01</span>
+                      <div class="aboutStep__title">Логистика по всему миру</div>
+                      <div class="aboutStep__text">Наша команда переместит любой ваш товар из точки А в точку Б.</div>
+                    </div>
+                    <div class="aboutStep">
+                      <span class="aboutStep__index">02</span>
+                      <div class="aboutStep__title">Таможенные услуги</div>
+                      <div class="aboutStep__text">Являемся таможенным брокером, поможем с любым товаром.</div>
+                    </div>
+                    <div class="aboutStep">
+                      <span class="aboutStep__index">03</span>
+                      <div class="aboutStep__title">Платежный агент</div>
+                      <div class="aboutStep__text">Своя цепочка платежей, тем самым исключаем возможность утери средств.</div>
+                    </div>
+                    <div class="aboutStep">
+                      <span class="aboutStep__index">04</span>
+                      <div class="aboutStep__title">Детейлинг центр</div>
+                      <div class="aboutStep__text">Подготовили более 1000 автомобилей, значит и ваш автомобиль в надежных руках.</div>
+                    </div>
+                  </div>
+                  <div class="aboutParagraph">Каждое их этих направлений уже имеет положительные результаты на начальных этапах, поэтому мы приняли решение масштабировать их и оказывать полный комплекс услуг под любые задачи.</div>
+                </div>
+                <div class="aboutVisual">
+                  <span class="aboutVisual__eyebrow">Образ</span>
+                  <strong class="aboutVisual__title">Комплекс услуг</strong>
+                  <span class="aboutVisual__note">Логистика / таможня / платежи / детейлинг / placeholder под коллаж</span>
+                </div>
+              </div>
+            `
+          },
+          {
+            title: "Платежный агент",
+            body: "Мы обеспечиваем максимальную безопасность и удобство при проведении финансовых операций.",
+            extraHtml: `
+              <div class="aboutSplit">
+                <div class="aboutStack">
+                  <div class="aboutSteps">
+                    <div class="aboutStep">
+                      <span class="aboutStep__index">01</span>
+                      <div class="aboutStep__title">Собственная система платежей, которая позволяет быстро и безопасно проводить финансовые операции.</div>
+                    </div>
+                    <div class="aboutStep">
+                      <span class="aboutStep__index">02</span>
+                      <div class="aboutStep__title">Мы легко адаптируемся и находим решение в каждой ситуации.</div>
+                    </div>
+                    <div class="aboutStep">
+                      <span class="aboutStep__index">03</span>
+                      <div class="aboutStep__title">Наша компания имеет большой опыт работы в сфере параллельного импорта товаров в Россию, что позволяет нам предлагать клиентам только проверенные решения.</div>
+                    </div>
+                    <div class="aboutStep">
+                      <span class="aboutStep__index">04</span>
+                      <div class="aboutStep__title">Мы всегда работаем прозрачно и предоставляем полную информацию клиентам по используемым схемам, насколько это возможно, в рамках сохранения коммерческой тайны.</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="aboutVisual">
+                  <span class="aboutVisual__eyebrow">Образ</span>
+                  <strong class="aboutVisual__title">Безопасность денег</strong>
+                  <span class="aboutVisual__note">Платежная сеть / международные переводы / placeholder под финансовый образ</span>
+                </div>
+              </div>
+            `
+          },
+          {
+            title: "Благодарим за доверие",
+            body: "Ваш надежный партнер ООО \"СГМ АВТО ГРУПП\"",
+            extraHtml: `
+              <div class="aboutFinal">
+                <div class="aboutVisual">
+                  <span class="aboutVisual__eyebrow">Образ</span>
+                  <strong class="aboutVisual__title">Финальный доверительный экран</strong>
+                  <span class="aboutVisual__note">Рукопожатие / деловая встреча / placeholder под финальное изображение</span>
+                </div>
+                <div class="aboutFinal__message">Ваш надежный партнер ООО "СГМ АВТО ГРУПП"</div>
+                <div class="actionRow">
+                  <button class="btn btn--accent" type="button" data-home-view="managerContacts">Связаться</button>
+                  <a class="btn link" href="./index.html">Вернуться на главную</a>
+                </div>
+              </div>
+            `
+          }
         ]
       };
     </script>
-    <script src="./assets/js/app.js?v=4" defer></script>
+    <script src="./assets/js/app.js?v=10" defer></script>
   </body>
 </html>
-

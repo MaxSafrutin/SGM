@@ -3,28 +3,26 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>SGM Auto Group — Структура сделки</title>
+    <title>SGM Auto Group — Сценарии санкционного импорта</title>
 
-    <link rel="icon" type="image/svg+xml" href="./assets/site/logo.svg" />
-    <link rel="apple-touch-icon" href="./assets/site/logo.svg" />
+    <link rel="icon" type="image/svg+xml" href="./assets/site/icon.svg" />
+    <link rel="apple-touch-icon" href="./assets/site/icon.svg" />
 
-    <!-- Fonts: Jost (Bold for headings, Light for text) -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="./assets/theme.css?v=4" />
-    <link rel="stylesheet" href="./assets/presentation.css?v=4" />
+    <link rel="stylesheet" href="./assets/theme.css?v=6" />
+    <link rel="stylesheet" href="./assets/presentation.css?v=10" />
   </head>
 
   <body class="presentation">
     <div class="bg" aria-hidden="true"></div>
     <div class="topline" aria-hidden="true"></div>
 
-    <main class="stage" aria-label="Презентация: структура сделки">
-      <!-- Slide container: content is injected via JS -->
+    <main class="stage" aria-label="Презентация: сценарии санкционного импорта">
       <section class="slide" id="slide" aria-live="polite">
         <div class="slide__inner">
           <div class="kicker" id="kicker">
@@ -45,11 +43,9 @@
         <div class="nav__left">
           <button class="btn" id="btnBack" type="button">Назад</button>
         </div>
-
         <div class="nav__center">
           <button class="btn btn--accent" id="btnNext" type="button">Далее</button>
         </div>
-
         <div class="nav__right">
           <a class="btn link" href="./index.html">На главную</a>
         </div>
@@ -57,17 +53,26 @@
     </nav>
 
     <script>
-      // IMPORTANT: text placeholders only — keep as-is (architecture > content)
       window.PRESENTATION_CONFIG = {
-        sectionTitle: "Структура сделки",
+        sectionTitle: "Сценарии санкционного импорта",
         slides: [
-          { title: "Слайд 1 — Заглушка", body: "Текст-заглушка. Одна мысль на экран." },
+          {
+            title: "Интерактивный раздел в работе",
+            body: "Презентация по сценариям санкционного импорта уже доступна в PDF, а интерактивную подачу мы доводим под публикацию.",
+            extraHtml: `
+              <div class="actionRow">
+                <a class="btn btn--accent" href="./assets/downloads/SGM_Auto_Group_kratko.pdf" target="_blank" rel="noreferrer noopener">SGM Auto Group кратко</a>
+                <a class="btn" href="./assets/downloads/Pismo%20po%20zanizhennoi%20stoimosti.pdf" target="_blank" rel="noreferrer noopener">Письмо и калькуляция</a>
+                <button class="btn" type="button" data-home-view="managerContacts">Контакты вашего менеджера</button>
+              </div>
+            `
+          },
           { title: "Слайд 2 — Заглушка", body: "Текст-заглушка. Одна мысль на экран." },
           { title: "Слайд 3 — Заглушка", body: "Текст-заглушка. Одна мысль на экран." },
           { title: "Слайд 4 — Заглушка", body: "Текст-заглушка. Одна мысль на экран." }
         ]
       };
     </script>
-    <script src="./assets/js/app.js?v=4" defer></script>
+    <script src="./assets/js/app.js?v=10" defer></script>
   </body>
 </html>
