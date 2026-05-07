@@ -525,6 +525,20 @@ p.lead {
   height: 18px;
 }
 
+.modalAction__icon--image {
+  width: 24px;
+  height: 24px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.modalAction__icon--image img {
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+  display: block;
+}
+
 .modalActionWrap--pdf {
   display: grid;
   grid-template-columns: minmax(0, 1fr) 48px;

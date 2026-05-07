@@ -3,66 +3,23 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>SGM Auto Group — Интерактивная презентация</title>
-
+    <title>RAM 1500: логика линейки — SGM Auto Group</title>
+    <meta name="description" content="Как выбрать RAM 1500: версии, моторы, комфорт, подвеска, комплектации, риски категории и безопасный формат покупки." />
     <link rel="icon" type="image/svg+xml" href="./assets/site/icon.svg" />
     <link rel="apple-touch-icon" href="./assets/site/icon.svg" />
-
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-      rel="stylesheet"
-    />
-
+    <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="./assets/theme.css?v=6" />
-    <link rel="stylesheet" href="./assets/presentation.css?v=10" />
+    <link rel="stylesheet" href="./assets/home.css?v=11" />
+    <link rel="stylesheet" href="./assets/presentation.css?v=23" />
   </head>
-
-  <body class="presentation" data-auto-home-view="ramIntroPdf">
-    <div class="bg" aria-hidden="true"></div>
-    <div class="topline" aria-hidden="true"></div>
-
-    <main class="stage" aria-label="Презентация: как выбрать пикап RAM">
-      <section class="slide is-active" id="slide">
-        <div class="slide__inner">
-          <div class="kicker" id="kicker">
-            <span class="kicker__dot" aria-hidden="true"></span><span data-kicker-label>Раздел</span>
-          </div>
-          <h1>Как выбрать пикап RAM</h1>
-          <p class="text">Интерактивная страница в работе. Пока можно открыть PDF-материал или перейти к контактам менеджера.</p>
-          <div class="extra">
-            <div class="actionRow">
-              <a class="btn" href="./contacts.html">Контакты вашего менеджера</a>
-            </div>
-          </div>
-        </div>
-      </section>
-    </main>
-
-    <nav class="nav" aria-label="Навигация">
-      <div class="nav__bar">
-        <div class="nav__counter">
-          <div class="counter">1 / 1</div>
-          <div class="nav__progress"><span class="nav__progressFill" style="width: 100%;"></span></div>
-        </div>
-        <div class="nav__left"></div>
-        <div class="nav__center"></div>
-        <div class="nav__right">
-          <a class="btn link" href="./index.html" aria-label="На главную">
-            <span class="btn__icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M3 10.5 12 3l9 7.5"></path>
-                <path d="M5 9.5V21h14V9.5"></path>
-                <path d="M10 21v-6h4v6"></path>
-              </svg>
-            </span>
-            <span class="btn__label">На главную</span>
-          </a>
-        </div>
-      </div>
-    </nav>
-    <script src="./assets/js/app.js?v=11" defer></script>
+  <body class="presentation" data-presentation-id="ram">
+    <div class="bg" aria-hidden="true"></div><div class="topline" aria-hidden="true"></div>
+    <main class="stage" aria-label="RAM 1500"><section class="slide" id="slide" aria-live="polite"><div class="slide__inner"><div class="kicker" id="kicker"><span class="kicker__dot" aria-hidden="true"></span><span data-kicker-label>Раздел</span></div><h1 id="title">Заголовок</h1><p class="text" id="body">Текст</p><div class="extra" id="extra"></div></div></section></main>
+    <nav class="nav" aria-label="Навигация по слайдам"><div class="nav__bar"><div class="nav__counter"><div class="counter" id="counter">1 / 1</div></div><div class="nav__left"><button class="btn" id="btnBack" type="button">Назад</button></div><div class="nav__center"><button class="btn btn--accent" id="btnNext" type="button">Далее</button></div><div class="nav__right"><a class="btn link" href="./index.html">На главную</a></div></div></nav>
+    <div class="modalRoot" id="homeModalRoot" hidden></div>
+    <script src="./assets/js/presentation-data.js?v=9"></script>
+    <script src="./assets/js/app.js?v=21" defer></script>
   </body>
 </html>
-
