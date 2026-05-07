@@ -45,6 +45,38 @@ body.modal-open {
   padding: 40px 36px 32px;
 }
 
+.wrap--contactsPage {
+  padding: 18px 14px;
+}
+
+.card--contactsPage {
+  width: min(620px, calc(100vw - 28px));
+  border-radius: 20px;
+  background: rgba(15, 15, 15, 0.96);
+  overflow: visible;
+}
+
+.card--contactsPage::after {
+  display: none;
+}
+
+.card--contactsPage .card__body {
+  padding: 24px;
+}
+
+.card--contactsPage .modalActions {
+  margin-top: 14px;
+}
+
+.card--contactsPage .modalAction {
+  min-height: 44px;
+  padding: 12px 16px;
+}
+
+.card--contactsPage .modalAction--presentation {
+  min-height: 58px;
+}
+
 .heroMeta {
   display: flex;
   align-items: center;
@@ -582,7 +614,7 @@ p.lead {
 
 .contactHero {
   display: grid;
-  grid-template-columns: 112px 1fr;
+  grid-template-columns: 112px minmax(0, 1fr);
   gap: 16px;
   align-items: start;
 }
@@ -627,6 +659,7 @@ p.lead {
 .contactName {
   margin: 0;
   font-size: 26px;
+  line-height: 1.08;
   font-weight: 700;
   letter-spacing: -0.02em;
 }
@@ -924,7 +957,7 @@ p.lead {
   }
 
   .contactHero {
-    grid-template-columns: 92px 1fr;
+    grid-template-columns: 92px minmax(0, 1fr);
     gap: 14px;
   }
 
@@ -939,6 +972,10 @@ p.lead {
 }
 
 @media (max-width: 560px) {
+  .card--contactsPage .contactHero {
+    grid-template-columns: 1fr;
+  }
+
   .contactTopActions {
     grid-template-columns: 1fr;
   }
@@ -974,6 +1011,16 @@ p.lead {
   .contactAccordion summary {
     padding-left: 14px;
     padding-right: 14px;
+  }
+}
+
+@media (max-width: 380px) {
+  .card--contactsPage .card__body {
+    padding: 20px;
+  }
+
+  .contactHero {
+    grid-template-columns: 1fr;
   }
 }
 
