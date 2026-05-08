@@ -880,6 +880,16 @@ function makePresentationHref(presentationId, slideNumber) {
   return `${path}#${presentationId}/${slide}`;
 }
 
+const ARTICLE_LANDING_PRESENTATIONS = new Set([
+  "trust",
+  "gray-risks",
+  "deal",
+  "format",
+  "car-choice",
+  "ram",
+  "contract"
+]);
+
 function getScenarioBookByIndex(index) {
   const numericIndex = Number(index);
   if (!Number.isFinite(numericIndex)) return null;
@@ -2677,11 +2687,256 @@ function setupPresentationHomeViewModals() {
   return controller;
 }
 
+function decoratePresentationNavButton(el, iconName, fallbackLabel) {
+  if (!el || el.dataset.navDecorated === "true") return;
+
+  const label = (el.textContent || fallbackLabel || "").trim();
+  el.dataset.navDecorated = "true";
+  el.setAttribute("aria-label", label);
+  el.innerHTML = `
+    <span class="btn__icon" aria-hidden="true">${renderIcon(iconName)}</span>
+    <span class="btn__label">${escapeHtml(label)}</span>
+  `;
+}
+
+function getLandingPopupText(slide) {
+  if (!slide) return "";
+  if (typeof slide.popup === "string") return slide.popup;
+  if (slide.popup && typeof slide.popup === "object") {
+    return slide.popup.default || Object.values(slide.popup)[0] || "";
+  }
+  return "";
+}
+
+function makeLandingVisualPrompt(heading, text) {
+  const cleanHeading = String(heading || "раздел").replace(/\s+/g, " ").trim();
+  const cleanText = String(text || "").replace(/\s+/g, " ").trim();
+  const detail = cleanText ? `, смысл: ${cleanText.slice(0, 120)}` : "";
+  return `Промт для изображения: деловой премиальный визуал для раздела «${cleanHeading}»${detail}, темный стиль SGM Auto Group, автомобиль, документы и проверяемая сделка.`;
+}
+
+function renderLandingSection(section, index, total, isIntro = false) {
+  const heading = isIntro ? section.title : section.heading;
+  const text = isIntro ? section.text : section.text;
+  const note = isIntro ? "" : getLandingPopupText(section);
+  const iconName = isIntro ? "presentation" : section.visualIcon;
+  const stepLabel = isIntro ? `${total - 1} разделов` : `Раздел ${index}`;
+  const tag = isIntro ? "h1" : "h2";
+  const id = isIntro ? "intro" : `section-${index}`;
+
+  return `
+    <section class="articleSection" id="${escapeHtml(id)}" data-landing-section data-menu-title="${escapeHtml(heading || "Раздел")}" data-menu-sub="${escapeHtml(stepLabel)}">
+      <header class="articleHeader">
+        <${tag}>${escapeHtml(heading || "Раздел")}</${tag}>
+        <span class="articleStep">${escapeHtml(stepLabel)}</span>
+      </header>
+      <figure class="articleVisual">
+        <figcaption class="articleVisual__prompt">${escapeHtml(makeLandingVisualPrompt(heading, text))}</figcaption>
+      </figure>
+      <div class="articleBody">
+        ${text ? `<p>${escapeHtml(text)}</p>` : ""}
+        ${note ? `
+          <div class="articleNote">
+            <span class="articleNote__icon" aria-hidden="true">${renderPresentationIcon(iconName)}</span>
+            <div class="articleNote__content"><p>${escapeHtml(note)}</p></div>
+          </div>
+        ` : ""}
+      </div>
+    </section>
+  `;
+}
+
+function initPresentationLanding(config) {
+  const body = document.body;
+  const stage = document.querySelector(".stage");
+  const modal = setupPresentationHomeViewModals();
+  const presentationId = String(config.id || body?.getAttribute("data-presentation-id") || "");
+  const sourceSlides = Array.isArray(config.slides) ? config.slides : [];
+  const sections = [
+    {
+      title: config.sectionTitle || config.title || "Презентация",
+      text: config.title || ""
+    },
+    ...sourceSlides
+  ];
+
+  if (!stage || sections.length <= 1) return false;
+
+  body.classList.add("article-landing");
+  stage.className = "articleShell";
+  stage.setAttribute("aria-label", config.title || "Презентация");
+  stage.innerHTML = sections.map((section, index) => renderLandingSection(section, index, sections.length, index === 0)).join("");
+
+  const guideButton = document.createElement("button");
+  guideButton.className = "guideMenuButton";
+  guideButton.type = "button";
+  guideButton.setAttribute("aria-label", "Открыть содержание");
+  guideButton.setAttribute("aria-expanded", "false");
+  guideButton.innerHTML = "<span></span><span></span><span></span>";
+
+  const guideRoot = document.createElement("div");
+  guideRoot.className = "guideMenuRoot";
+  guideRoot.hidden = true;
+  guideRoot.innerHTML = `
+    <button class="guideMenuOverlay" type="button" data-landing-menu-close aria-label="Закрыть содержание"></button>
+    <aside class="guideMenu" aria-label="Содержание гайда">
+      <div class="guideMenu__head">
+        <div>
+          <span class="guideMenu__eyebrow">Содержание</span>
+          <h2>${escapeHtml(config.sectionTitle || config.title || "Презентация")}</h2>
+        </div>
+        <button class="guideMenu__close" type="button" data-landing-menu-close aria-label="Закрыть">×</button>
+      </div>
+      <div class="guideMenu__body">
+        <nav class="articleToc" data-landing-toc aria-label="Разделы"></nav>
+      </div>
+    </aside>
+  `;
+  document.body.append(guideButton, guideRoot);
+
+  const renderedSections = Array.from(document.querySelectorAll("[data-landing-section]"));
+  const toc = guideRoot.querySelector("[data-landing-toc]");
+  const els = {
+    counter: document.getElementById("counter"),
+    back: document.getElementById("btnBack"),
+    next: document.getElementById("btnNext"),
+    home: document.querySelector(".nav__right .btn, .nav__right .link")
+  };
+  const counterWrap = els.counter?.closest(".nav__counter");
+  let activeIndex = 0;
+
+  decoratePresentationNavButton(els.back, "arrowLeft", "Назад");
+  decoratePresentationNavButton(els.next, "arrowRight", "Далее");
+  decoratePresentationNavButton(els.home, "home", "На главную");
+
+  if (els.home) {
+    els.home.setAttribute("href", "./index.html");
+  }
+
+  if (counterWrap && !counterWrap.querySelector(".nav__progress")) {
+    const progress = document.createElement("div");
+    progress.className = "nav__progress";
+    progress.innerHTML = '<span class="nav__progressFill"></span>';
+    counterWrap.appendChild(progress);
+  }
+
+  toc.innerHTML = renderedSections.map((section, index) => `
+    <a class="guideTocLink" href="#${escapeHtml(section.id)}" data-landing-toc-link data-index="${index}">
+      <span class="guideToc__icon">${index === 0 ? renderIcon("presentation") : renderPresentationIcon(sourceSlides[index - 1]?.visualIcon)}</span>
+      <span>
+        <span>${escapeHtml(section.dataset.menuTitle || "Раздел")}</span>
+        <small>${escapeHtml(section.dataset.menuSub || "")}</small>
+      </span>
+    </a>
+  `).join("");
+
+  function getActiveIndex() {
+    const midpoint = window.scrollY + window.innerHeight * 0.42;
+    let index = 0;
+    renderedSections.forEach((section, sectionIndex) => {
+      if (section.offsetTop <= midpoint) index = sectionIndex;
+    });
+    return index;
+  }
+
+  function scrollToSection(index) {
+    const target = renderedSections[Math.max(0, Math.min(renderedSections.length - 1, index))];
+    if (!target) return;
+    target.scrollIntoView({ behavior: "smooth", block: "start" });
+  }
+
+  function updateState() {
+    const maxScroll = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
+    const progress = Math.min(1, Math.max(0, window.scrollY / maxScroll));
+    activeIndex = getActiveIndex();
+
+    if (counterWrap) {
+      counterWrap.style.setProperty("--progress", String(progress));
+    }
+
+    if (els.counter) {
+      els.counter.textContent = `${activeIndex + 1} / ${renderedSections.length}`;
+    }
+
+    if (els.back) els.back.disabled = activeIndex === 0;
+    if (els.next) els.next.disabled = activeIndex === renderedSections.length - 1;
+
+    guideRoot.querySelectorAll("[data-landing-toc-link]").forEach((link) => {
+      link.classList.toggle("is-active", Number(link.dataset.index) === activeIndex);
+    });
+  }
+
+  function openMenu() {
+    guideRoot.hidden = false;
+    body.classList.add("guide-menu-open");
+    guideButton.setAttribute("aria-expanded", "true");
+    updateState();
+  }
+
+  function closeMenu() {
+    body.classList.remove("guide-menu-open");
+    guideButton.setAttribute("aria-expanded", "false");
+    window.setTimeout(() => {
+      if (!body.classList.contains("guide-menu-open")) {
+        guideRoot.hidden = true;
+      }
+    }, 260);
+  }
+
+  guideButton.addEventListener("click", (event) => {
+    event.preventDefault();
+    if (body.classList.contains("guide-menu-open")) {
+      closeMenu();
+    } else {
+      openMenu();
+    }
+  });
+
+  guideRoot.addEventListener("click", (event) => {
+    if (event.target.closest("[data-landing-menu-close]")) {
+      event.preventDefault();
+      closeMenu();
+      return;
+    }
+
+    const link = event.target.closest("[data-landing-toc-link]");
+    if (link) {
+      event.preventDefault();
+      closeMenu();
+      scrollToSection(Number(link.dataset.index));
+    }
+  });
+
+  els.back?.addEventListener("click", () => scrollToSection(activeIndex - 1));
+  els.next?.addEventListener("click", () => scrollToSection(activeIndex + 1));
+  els.home?.addEventListener("click", (event) => {
+    event.preventDefault();
+    window.location.href = "./index.html";
+  });
+
+  window.addEventListener("scroll", updateState, { passive: true });
+  window.addEventListener("resize", updateState);
+  window.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && body.classList.contains("guide-menu-open")) {
+      closeMenu();
+    }
+  });
+
+  updateState();
+  return true;
+}
+
 function initPresentation() {
   const bodyPresentationId = document.body?.getAttribute("data-presentation-id");
   const dataPresentation = bodyPresentationId ? getPresentationById(bodyPresentationId) : null;
   const config = window.PRESENTATION_CONFIG || dataPresentation;
   if (!config || !Array.isArray(config.slides)) return;
+
+  if (ARTICLE_LANDING_PRESENTATIONS.has(String(config.id || bodyPresentationId || ""))) {
+    initPresentationLanding(config);
+    return;
+  }
+
   const presentationModal = setupPresentationHomeViewModals();
   initGuideMenu(presentationModal);
 
@@ -2709,21 +2964,9 @@ function initPresentation() {
     return;
   }
 
-  function decorateNavButton(el, iconName, fallbackLabel) {
-    if (!el || el.dataset.navDecorated === "true") return;
-
-    const label = (el.textContent || fallbackLabel || "").trim();
-    el.dataset.navDecorated = "true";
-    el.setAttribute("aria-label", label);
-    el.innerHTML = `
-      <span class="btn__icon" aria-hidden="true">${renderIcon(iconName)}</span>
-      <span class="btn__label">${escapeHtml(label)}</span>
-    `;
-  }
-
-  decorateNavButton(els.back, "arrowLeft", "Назад");
-  decorateNavButton(els.next, "arrowRight", "Далее");
-  decorateNavButton(els.home, "home", "На главную");
+  decoratePresentationNavButton(els.back, "arrowLeft", "Назад");
+  decoratePresentationNavButton(els.next, "arrowRight", "Далее");
+  decoratePresentationNavButton(els.home, "home", "На главную");
 
   const counterWrap = els.counter.closest(".nav__counter");
 

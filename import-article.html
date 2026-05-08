@@ -3,39 +3,866 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Как привезти а/м из-за рубежа — SGM Auto Group</title>
-    <meta name="description" content="Интерактивный разбор импорта автомобиля из-за рубежа: сценарий, проверка продавца, договор, логистика, таможня, документы и приемка." />
+    <title>Как привезти авто из-за рубежа — SGM Auto Group</title>
+    <meta name="description" content="Гайд SGM Auto Group: 7 шагов импорта автомобиля из-за рубежа с учетом нового утильсбора в 2026 году." />
     <link rel="icon" type="image/svg+xml" href="./assets/site/icon.svg" />
     <link rel="apple-touch-icon" href="./assets/site/icon.svg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="./assets/theme.css?v=6" />
-    <link rel="stylesheet" href="./assets/home.css?v=11" />
+    <link rel="stylesheet" href="./assets/home.css?v=13" />
     <link rel="stylesheet" href="./assets/presentation.css?v=24" />
+    <style>
+      body.importLanding {
+        min-height: 100%;
+        overflow-x: hidden;
+        width: 100%;
+        max-width: 100%;
+        scrollbar-gutter: stable;
+        --nav-h: 114px;
+      }
+
+      body.importLanding .guideMenuButton {
+        position: fixed !important;
+        display: block;
+        top: max(18px, env(safe-area-inset-top)) !important;
+        right: calc(18px + env(safe-area-inset-right)) !important;
+        left: auto !important;
+        z-index: 1000;
+        border-color: rgba(255, 245, 226, 0.24) !important;
+        background: rgba(15, 15, 15, 0.88) !important;
+      }
+
+      body.importLanding .guideMenuButton::before {
+        content: "";
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        width: 22px;
+        height: 2px;
+        border-radius: 999px;
+        background: #f1d5ab;
+        box-shadow: 0 -7px 0 #f1d5ab, 0 7px 0 #f1d5ab;
+        transform: translate(-50%, -50%);
+      }
+
+      body.importLanding.guide-menu-open .guideMenuButton::before {
+        box-shadow: none;
+        transform: translate(-50%, -50%) rotate(45deg);
+      }
+
+      body.importLanding.guide-menu-open .guideMenuButton::after {
+        content: "";
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        width: 22px;
+        height: 2px;
+        border-radius: 999px;
+        background: #f1d5ab;
+        transform: translate(-50%, -50%) rotate(-45deg);
+      }
+
+      body.importLanding .guideMenuButton span {
+        display: none;
+      }
+
+      .articleProgress {
+        display: none;
+      }
+
+      .articleProgress__fill {
+        display: block;
+        width: calc(var(--scroll-progress, 0) * 100%);
+        height: 100%;
+        background: linear-gradient(90deg, #5f2b26, #fff5e2, #d09e56);
+        transition: width 90ms linear;
+      }
+
+      .articleToc {
+        display: grid;
+        gap: 8px;
+      }
+
+      .articleToc a {
+        display: grid;
+        grid-template-columns: 34px minmax(0, 1fr);
+        gap: 10px;
+        align-items: center;
+        padding: 10px;
+        border-radius: 14px;
+        border: 1px solid rgba(255, 255, 255, 0.09);
+        background: rgba(255, 255, 255, 0.025);
+        color: var(--text);
+        text-decoration: none;
+      }
+
+      .articleToc a.is-active {
+        border-color: rgba(255, 245, 226, 0.28);
+        background: rgba(241, 213, 171, 0.08);
+      }
+
+      .articleToc__num {
+        display: inline-grid;
+        place-items: center;
+        width: 34px;
+        height: 34px;
+        border-radius: 12px;
+        background: rgba(255, 255, 255, 0.06);
+        color: #f1d5ab;
+        font-size: 12px;
+        font-weight: 700;
+      }
+
+      .articleToc__title {
+        display: block;
+        font-size: 14px;
+        font-weight: 600;
+        line-height: 1.18;
+      }
+
+      .articleToc__sub {
+        display: block;
+        margin-top: 2px;
+        color: rgba(255, 255, 255, 0.58);
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+      }
+
+      .articleShell {
+        box-sizing: border-box;
+        width: 100%;
+        max-width: min(1120px, 100%);
+        margin: 0 auto;
+        padding: 32px 14px calc(var(--nav-h) + 34px);
+      }
+
+      .articleSection {
+        min-width: 0;
+        max-width: 100%;
+        overflow: hidden;
+        min-height: min(100dvh, 840px);
+        display: grid;
+        align-content: center;
+        gap: 18px;
+        padding: 34px 0;
+        scroll-margin-top: 24px;
+      }
+
+      .articleSection:first-child {
+        padding-top: 54px;
+      }
+
+      .articleHeader {
+        display: grid;
+        gap: 8px;
+        width: min(860px, 100%);
+        justify-self: center;
+      }
+
+      .articleHeader h1,
+      .articleHeader h2 {
+        margin: 0;
+        max-width: 12ch;
+        font-size: clamp(38px, 8vw, 82px);
+        line-height: 0.95;
+        letter-spacing: 0;
+        font-weight: 800;
+      }
+
+      .articleHeader h2 {
+        max-width: 14ch;
+        font-size: clamp(34px, 6vw, 64px);
+      }
+
+      .articleStep {
+        color: #f1d5ab;
+        font-size: 13px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+      }
+
+      .articleVisual {
+        width: 100%;
+        max-width: 100%;
+        width: min(860px, 100%);
+        justify-self: center;
+        margin: 0;
+        min-height: clamp(210px, 42vw, 360px);
+        display: grid;
+        align-items: end;
+        overflow: hidden;
+        border-radius: 24px;
+        border: 1px solid rgba(255, 255, 255, 0.10);
+        background:
+          linear-gradient(140deg, rgba(95, 43, 38, 0.32), rgba(255, 245, 226, 0.08) 42%, rgba(15, 15, 15, 0.88)),
+          radial-gradient(520px 280px at 72% 24%, rgba(241, 213, 171, 0.15), transparent 64%);
+        box-shadow: 0 24px 80px rgba(0, 0, 0, 0.34);
+      }
+
+      .articleVisual--image {
+        align-items: stretch;
+      }
+
+      .articleVisual__image {
+        width: 100%;
+        height: 100%;
+        min-height: inherit;
+        object-fit: cover;
+        display: block;
+      }
+
+      .articleVisual__prompt {
+        max-width: 100%;
+        white-space: normal !important;
+        word-break: break-word;
+        overflow-wrap: anywhere;
+        margin: 0;
+        padding: 18px;
+        color: rgba(255, 255, 255, 0.74);
+        font-size: 13px;
+        line-height: 1.45;
+        background: linear-gradient(180deg, rgba(7, 7, 7, 0), rgba(7, 7, 7, 0.72));
+      }
+
+      .srOnly {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+      }
+
+      .articleBody {
+        display: grid;
+        gap: 14px;
+        width: min(860px, 100%);
+        max-width: 100%;
+        justify-self: center;
+        min-width: 0;
+      }
+
+      .articleBody p {
+        margin: 0;
+        color: rgba(255, 255, 255, 0.82);
+        font-size: clamp(18px, 2.2vw, 24px);
+        line-height: 1.35;
+        font-weight: 300;
+      }
+
+      .articleBody strong {
+        color: #fff5e2;
+        font-weight: 650;
+      }
+
+      .articleInlineLink {
+        color: #f1d5ab;
+        text-decoration: none;
+        border-bottom: 1px solid rgba(241, 213, 171, 0.42);
+      }
+
+      .articleNote {
+        margin: 0;
+        display: grid;
+        grid-template-columns: 32px minmax(0, 1fr);
+        gap: 12px;
+        align-items: start;
+        padding: 16px 18px;
+        border-radius: 18px;
+        border: 1px solid rgba(241, 213, 171, 0.18);
+        background: rgba(241, 213, 171, 0.065);
+        color: #fff;
+        font-size: clamp(16px, 1.8vw, 20px);
+        line-height: 1.35;
+        font-weight: 500;
+      }
+
+      .articleNote__icon {
+        display: inline-grid;
+        place-items: center;
+        width: 32px;
+        height: 32px;
+        border-radius: 12px;
+        border: 1px solid rgba(255, 245, 226, 0.18);
+        background: rgba(255, 255, 255, 0.04);
+        color: #f1d5ab;
+      }
+
+      .articleNote__icon svg {
+        width: 18px;
+        height: 18px;
+      }
+
+      .articleNote__content {
+        min-width: 0;
+      }
+
+      .articleNote--loud {
+        text-transform: uppercase;
+        letter-spacing: 0.03em;
+      }
+
+      .articleNote p {
+        margin: 0;
+        color: inherit;
+        font-size: inherit;
+        font-weight: inherit;
+        line-height: inherit;
+      }
+
+      .articleChecklist {
+        margin: 10px 0 0;
+        padding: 0 0 0 20px;
+        color: rgba(255, 255, 255, 0.78);
+        line-height: 1.45;
+      }
+
+      .articleCta {
+        appearance: none;
+        justify-self: center;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 52px;
+        padding: 14px 20px;
+        border-radius: 16px;
+        border: 1px solid rgba(255, 245, 226, 0.32);
+        background: linear-gradient(90deg, rgba(95, 43, 38, 0.48), rgba(255, 245, 226, 0.16), rgba(95, 43, 38, 0.48));
+        color: #fff;
+        font: inherit;
+        font-size: 14px;
+        font-weight: 750;
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+        cursor: pointer;
+        box-shadow: 0 18px 40px rgba(95, 43, 38, 0.24);
+      }
+
+      .articleNav {
+        /* Uses the shared presentation nav classes below. */
+      }
+
+      body.importLanding .nav {
+        bottom: 0 !important;
+        height: var(--nav-h) !important;
+        transform: translateZ(0);
+        backface-visibility: hidden;
+        will-change: transform;
+      }
+
+      .articleCounter {
+        display: none;
+      }
+
+      @media (max-width: 560px) {
+        body.importLanding .guideMenuButton {
+          top: max(12px, env(safe-area-inset-top)) !important;
+          right: calc(12px + env(safe-area-inset-right)) !important;
+          left: auto !important;
+        }
+
+        body.importLanding .nav__bar {
+          width: calc(100% - 36px);
+          max-width: 354px;
+        }
+
+        .articleShell {
+          width: 100%;
+          max-width: 540px;
+          padding-bottom: 100px;
+          padding-left: 10px;
+          padding-right: 10px;
+        }
+
+        .articleSection {
+          min-height: auto;
+          align-content: start;
+          gap: 14px;
+          padding: 24px 0;
+        }
+
+        .articleSection:first-child {
+          padding-top: 68px;
+        }
+
+        .articleHeader h1,
+        .articleHeader h2 {
+          max-width: 10ch;
+        }
+
+        .articleStep {
+          font-size: 11px;
+        }
+
+        .articleVisual {
+          min-height: 196px;
+          border-radius: 20px;
+        }
+
+        .articleVisual__prompt {
+          padding: 14px;
+          font-size: 12px;
+        }
+
+        .articleBody p {
+          font-size: 17px;
+        }
+
+        .articleNote {
+          grid-template-columns: 30px minmax(0, 1fr);
+          padding: 14px;
+          font-size: 15px;
+        }
+
+        .articleNote__icon {
+          width: 30px;
+          height: 30px;
+        }
+
+        .articleNav .btn {
+          min-width: 0;
+        }
+      }
+    </style>
   </head>
-  <body class="presentation" data-presentation-id="import-article">
-    <div class="bg" aria-hidden="true"></div><div class="topline" aria-hidden="true"></div>
-    <main class="stage" aria-label="Как привезти а/м из-за рубежа">
-      <section class="slide" id="slide" aria-live="polite">
-        <div class="slide__inner">
-          <div class="kicker" id="kicker"><span class="kicker__dot" aria-hidden="true"></span><span data-kicker-label>Раздел</span></div>
-          <h1 id="title">Заголовок</h1>
-          <p class="text" id="body">Текст</p>
-          <div class="extra" id="extra"></div>
+  <body class="presentation importLanding">
+    <div class="bg" aria-hidden="true"></div>
+    <div class="topline" aria-hidden="true"></div>
+    <div class="articleProgress" aria-hidden="true"><span class="articleProgress__fill"></span></div>
+
+    <button class="guideMenuButton" type="button" data-menu-open aria-label="Открыть содержание" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="guideMenuRoot" data-menu-root hidden>
+      <button class="guideMenuOverlay" type="button" data-menu-close aria-label="Закрыть содержание"></button>
+      <aside class="guideMenu" aria-label="Содержание гайда">
+        <div class="guideMenu__head">
+          <div>
+            <span class="guideMenu__eyebrow">Содержание</span>
+            <h2>Как привезти авто из-за рубежа</h2>
+          </div>
+          <button class="guideMenu__close" type="button" data-menu-close aria-label="Закрыть">×</button>
+        </div>
+        <div class="guideMenu__body">
+          <nav class="articleToc" data-toc aria-label="Разделы статьи"></nav>
+        </div>
+      </aside>
+    </div>
+
+    <main class="articleShell" aria-label="Как привезти авто из-за рубежа">
+      <section class="articleSection" id="intro" data-section data-menu-title="Вводный экран" data-menu-sub="7 шагов">
+        <header class="articleHeader">
+          <h1>Как привезти авто из-за рубежа</h1>
+          <span class="articleStep">7 шагов с учетом нового утильсбора в 2026 году</span>
+        </header>
+        <figure class="articleVisual articleVisual--image">
+          <img class="articleVisual__image" src="./assets/media/import-article%20image/ChatGPT%20Image%201.png" alt="Премиальная карта маршрута автомобиля из-за рубежа в Россию" />
+          <figcaption class="srOnly">Промт для изображения: премиальная карта маршрута автомобиля из-за рубежа в Россию, аккуратные линии логистики, документы, таможня, современный автомобиль, деловой темный стиль SGM.</figcaption>
+        </figure>
+        <div class="articleBody"></div>
+      </section>
+
+      <section class="articleSection" id="choose-car" data-section data-menu-title="Выбрать авто" data-menu-sub="1 шаг">
+        <header class="articleHeader">
+          <h2>Выбрать авто</h2>
+          <span class="articleStep">1 шаг</span>
+        </header>
+        <figure class="articleVisual articleVisual--image">
+          <img class="articleVisual__image" src="./assets/media/import-article%20image/ChatGPT%20Image%202.png" alt="Экран выбора автомобиля на классифайдах" />
+          <figcaption class="srOnly">Промт для изображения: экран выбора автомобиля как на классифайдах Avito, Auto.ru и mobile.de, карточки машин, фильтры, цена, год, пробег, без логотипов крупным планом, деловой стиль.</figcaption>
+        </figure>
+        <div class="articleBody">
+          <p>Начните с выбора конкретного автомобиля. Это могут быть российские площадки, предложения за рубежом или иностранные маркетплейсы.</p>
+          <div class="articleNote">
+            <span class="articleNote__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 7 9 18l-5-5"></path></svg>
+            </span>
+            <div class="articleNote__content">
+              <p>Важно сразу определить модель, комплектацию, год выпуска, пробег и ориентировочный бюджет. Это основа для расчета всех дальнейших расходов, включая утильсбор.</p>
+              <ul class="articleChecklist">
+                <li>Модель, версия, двигатель и год выпуска.</li>
+                <li>Пробег, состояние, цвет и ключевые опции.</li>
+                <li>Планируемый бюджет с запасом на доставку, таможню и оформление.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="articleSection" id="choose-supplier" data-section data-menu-title="Выбрать поставщика" data-menu-sub="2 шаг">
+        <header class="articleHeader">
+          <h2>Выбрать поставщика</h2>
+          <span class="articleStep">2 шаг</span>
+        </header>
+        <figure class="articleVisual articleVisual--image">
+          <img class="articleVisual__image" src="./assets/media/import-article%20image/ChatGPT%20Image%203.png" alt="Страны поставки автомобиля и маршруты" />
+          <figcaption class="srOnly">Промт для изображения: аккуратные флаги ОАЭ, Китая (КНР), США и Европы рядом с силуэтом автомобиля и линиями маршрутов поставки, премиальный темный фон.</figcaption>
+        </figure>
+        <div class="articleBody">
+          <p>После выбора автомобиля необходимо понять, из какой страны он будет ввозиться. Некоторые модели доступны только в ОАЭ, только в Китае, только в Европе или США.</p>
+          <p class="articleNote"><span class="articleNote__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h18"></path><path d="M16 5l7 7-7 7"></path><path d="M3 7h6"></path><path d="M3 17h6"></path></svg></span><span class="articleNote__content">От страны поставки зависят логистика, таможенные платежи, сроки и утильсбор.</span></p>
+        </div>
+      </section>
+
+      <section class="articleSection" id="check-supplier" data-section data-menu-title="Проверить поставщика" data-menu-sub="3 шаг">
+        <header class="articleHeader">
+          <h2>Проверить поставщика</h2>
+          <span class="articleStep">3 шаг</span>
+        </header>
+        <figure class="articleVisual articleVisual--image">
+          <img class="articleVisual__image" src="./assets/media/import-article%20image/ChatGPT%20Image%204.png" alt="Проверка компании-поставщика перед оплатой" />
+          <figcaption class="srOnly">Промт для изображения: проверка компании-поставщика на ноутбуке, карточка юрлица, суды, обороты, отзывы клиентов, значок подтверждения, спокойный деловой стиль.</figcaption>
+        </figure>
+        <div class="articleBody">
+          <p>Перед любыми оплатами обязательно проверьте компанию-поставщика. Посмотрите дату регистрации и обороты, проверьте судебные дела на <a class="articleInlineLink" href="https://www.rusprofile.ru/id/1216300039339" target="_blank" rel="noreferrer noopener">Руспрофайле</a>, изучите сайт, соцсети и отзывы клиентов.</p>
+          <p class="articleNote"><span class="articleNote__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"></path><path d="m9 12 2 2 4-4"></path></svg></span><span class="articleNote__content">Надежный поставщик — ключевой фактор безопасности сделки.</span></p>
+        </div>
+      </section>
+
+      <section class="articleSection" id="check-car" data-section data-menu-title="Проверить авто" data-menu-sub="4 шаг">
+        <header class="articleHeader">
+          <h2>Проверить авто</h2>
+          <span class="articleStep">4 шаг</span>
+        </header>
+        <figure class="articleVisual">
+          <figcaption class="articleVisual__prompt">Промт для изображения: инспекция автомобиля перед покупкой, толщиномер на кузове, видеоосмотр VIN и салона, чек-лист состояния, реалистичная автомобильная съемка.</figcaption>
+        </figure>
+        <div class="articleBody">
+          <p>Перед покупкой важно убедиться в реальном состоянии автомобиля. Запросите у поставщика местный аналог автотеки, видео с толщиномером в круг и подробное видео: от шильдика, затем кузов, салон и VIN на стекле или под капотом.</p>
+          <p class="articleNote"><span class="articleNote__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"></circle><path d="m21 21-4.3-4.3"></path><path d="m8.5 11 1.7 1.7 3.3-3.4"></path></svg></span><span class="articleNote__content">Это поможет избежать скрытых дефектов и несоответствий.</span></p>
+        </div>
+      </section>
+
+      <section class="articleSection" id="contract-payment" data-section data-menu-title="Договор и оплата" data-menu-sub="5 шаг">
+        <header class="articleHeader">
+          <h2>Договор и оплата</h2>
+          <span class="articleStep">5 шаг</span>
+        </header>
+        <figure class="articleVisual">
+          <figcaption class="articleVisual__prompt">Промт для изображения: договор купли-продажи автомобиля, график платежей, банковский перевод, подпись, печать, спокойная юридическая сцена без перегруза.</figcaption>
+        </figure>
+        <div class="articleBody">
+          <p>Это самый важный этап с точки зрения рисков.</p>
+          <p class="articleNote"><span class="articleNote__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H7a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7Z"></path><path d="M14 2v5h5"></path><path d="M9 15l2 2 4-4"></path></svg></span><span class="articleNote__content">Перед оплатой внимательно изучите договор: сроки, гарантии, ответственность сторон и порядок приемки. При возможности покажите договор юристу.</span></p>
+          <p>После этого вносится аванс — от фиксированной суммы до полной предоплаты, в зависимости от условий сделки.</p>
+        </div>
+      </section>
+
+      <section class="articleSection" id="delivery-customs" data-section data-menu-title="Доставка и таможня" data-menu-sub="6 шаг">
+        <header class="articleHeader">
+          <h2>Доставка и таможня</h2>
+          <span class="articleStep">6 шаг</span>
+        </header>
+        <figure class="articleVisual">
+          <figcaption class="articleVisual__prompt">Промт для изображения: автомобиль в закрытой перевозке, международный маршрут, таможенный пост, документы, платежи, аккуратная схема движения до России.</figcaption>
+        </figure>
+        <div class="articleBody">
+          <p>На этом этапе автомобиль проходит международную доставку, таможенное оформление, оплату пошлин и нового утильсбора.</p>
+          <p class="articleNote articleNote--loud"><span class="articleNote__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16"></path><path d="M4 12h16"></path><path d="M4 17h10"></path><path d="m17 17 2 2 4-4"></path></svg></span><span class="articleNote__content">Важно, чтобы все платежи были прозрачны и подтверждены документально.</span></p>
+        </div>
+      </section>
+
+      <section class="articleSection" id="receiving-registration" data-section data-menu-title="Получение и учет" data-menu-sub="7 шаг">
+        <header class="articleHeader">
+          <h2>Получение авто и постановка на учет</h2>
+          <span class="articleStep">7 шаг</span>
+        </header>
+        <figure class="articleVisual">
+          <figcaption class="articleVisual__prompt">Промт для изображения: выдача автомобиля клиенту, проверка VIN, толщиномер, ключи, документы и номерной знак, деловая премиальная атмосфера.</figcaption>
+        </figure>
+        <div class="articleBody">
+          <p>При получении автомобиля сверьте VIN-номер, проверьте пробег, осмотрите кузов толщиномером, заведите автомобиль и выполните тест-драйв.</p>
+          <p class="articleNote"><span class="articleNote__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10V8a2 2 0 0 0-2-2h-2.8L14 3H8L5.8 6H5a2 2 0 0 0-2 2v8"></path><circle cx="7" cy="17" r="2"></circle><circle cx="17" cy="17" r="2"></circle><path d="M5 13h14"></path></svg></span><span class="articleNote__content">После подтверждения состояния Вы вносите остаток суммы. У Вас есть 10 дней, чтобы поставить автомобиль на учет.</span></p>
+        </div>
+      </section>
+
+      <section class="articleSection" id="save-guide" data-section data-menu-title="Сохраните этот гайд" data-menu-sub="Финал">
+        <header class="articleHeader">
+          <h2>Сохраните этот гайд</h2>
+          <span class="articleStep">Он поможет избежать ошибок</span>
+        </header>
+        <figure class="articleVisual">
+          <figcaption class="articleVisual__prompt">Промт для изображения: человек сохраняет чек-лист импорта автомобиля в телефоне, рядом автомобиль, документы и спокойный менеджерский контакт, премиальный темный стиль.</figcaption>
+        </figure>
+        <div class="articleBody">
+          <p class="articleNote articleNote--loud"><span class="articleNote__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a4 4 0 0 1-4 4H8l-5 3V7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4Z"></path><path d="M8 10h8"></path><path d="M8 14h5"></path></svg></span><span class="articleNote__content">А если Вы не хотите тратить свое время, нажмите кнопку бесплатная консультация, и наш менеджер все сделает за Вас.</span></p>
+          <button class="articleCta" type="button" data-open-contact>Бесплатная консультация</button>
         </div>
       </section>
     </main>
-    <nav class="nav" aria-label="Навигация по слайдам">
+
+    <nav class="nav articleNav" aria-label="Навигация по статье">
       <div class="nav__bar">
-        <div class="nav__counter"><div class="counter" id="counter">1 / 1</div></div>
-        <div class="nav__left"><button class="btn" id="btnBack" type="button">Назад</button></div>
-        <div class="nav__center"><button class="btn btn--accent" id="btnNext" type="button">Далее</button></div>
-        <div class="nav__right"><a class="btn link" href="./index.html">На главную</a></div>
+        <div class="nav__counter" style="--progress: 0">
+          <div class="counter articleCounter" data-counter>1 / 9</div>
+          <div class="nav__progress"><span class="nav__progressFill"></span></div>
+        </div>
+        <div class="nav__left">
+          <button class="btn" type="button" data-prev>
+            <span class="btn__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"></path></svg></span>
+            <span class="btn__label">Назад</span>
+          </button>
+        </div>
+        <div class="nav__center">
+          <button class="btn btn--accent" type="button" data-next>
+            <span class="btn__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"></path></svg></span>
+            <span class="btn__label">Далее</span>
+          </button>
+        </div>
+        <div class="nav__right">
+          <button class="btn" type="button" data-home>
+            <span class="btn__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11 12 3l9 8"></path><path d="M5 10v10h14V10"></path><path d="M9 20v-6h6v6"></path></svg></span>
+            <span class="btn__label">Домой</span>
+          </button>
+        </div>
       </div>
     </nav>
-    <div class="modalRoot" id="homeModalRoot" hidden></div>
-    <script src="./assets/js/presentation-data.js?v=9"></script>
-    <script src="./assets/js/app.js?v=21" defer></script>
+
+    <div class="modalRoot" id="contactModalRoot" hidden>
+      <div class="modalShell" role="presentation">
+        <button class="modalOverlay" type="button" data-contact-close aria-label="Закрыть"></button>
+        <section class="modalCard modalCard--contacts" role="dialog" aria-modal="true" aria-label="Контакты менеджера">
+          <div class="modalHead">
+            <div class="modalHead__start"></div>
+            <button class="modalClose" type="button" data-contact-close aria-label="Закрыть">✕</button>
+          </div>
+          <div class="modalBody">
+            <div class="contactSheet">
+              <div class="contactHero">
+                <img class="contactAvatar" src="./assets/site/avatar_safrutin_pro.png" alt="Максим Сафрутин" />
+                <div class="contactHero__content">
+                  <h3 class="contactName">Максим Сафрутин</h3>
+                  <p class="contactRole">Менеджер отдела продаж</p>
+                  <a class="contactCompany contactCompanyLink" href="./index.html">ООО "СГМ АВТО ГРУПП"</a>
+                </div>
+              </div>
+              <div class="contactTopActions">
+                <a class="modalAction modalAction--accent modalAction--no-shine" href="./assets/downloads/Dobavit%20v%20kontakty.vcf" download>
+                  <span>Сохранить в контакты</span>
+                </a>
+                <button class="modalAction modalAction--shareAction" type="button" data-share-contact>
+                  <span>Поделиться</span>
+                </button>
+              </div>
+              <div class="contactMethod contactMethod--primary">
+                <div class="contactMethod__main">
+                  <a class="contactMethod__number" href="tel:+79016285661">+7 (901) 628-56-61</a>
+                  <span class="contactMethod__label">Рабочий</span>
+                </div>
+                <div class="contactMethod__actions">
+                  <a class="contactQuick" href="tel:+79016285661" aria-label="Позвонить" title="Позвонить" data-tooltip="Позвонить"><img src="./assets/site/phone-logo.svg" alt="" /></a>
+                  <a class="contactQuick" href="https://t.me/m_safrutin_sgm" target="_blank" rel="noreferrer noopener" aria-label="Telegram" title="Telegram" data-tooltip="Telegram"><img src="./assets/site/telegram-logo.svg" alt="" /></a>
+                  <a class="contactQuick" href="https://max.ru/u/f9LHodD0cOLkDYc7WRUvUlW3iTYHH3vBKhI2CVKRwNAwSRLmo_0ty6cL3VM" target="_blank" rel="noreferrer noopener" aria-label="Max" title="Max" data-tooltip="Max"><img src="./assets/site/logo_max.svg" alt="" /></a>
+                  <a class="contactQuick" href="https://vk.com/id1112271997" target="_blank" rel="noreferrer noopener" aria-label="VK" title="VK" data-tooltip="VK"><img src="./assets/site/vk-logo.svg" alt="" /></a>
+                </div>
+              </div>
+              <details class="contactAccordion">
+                <summary>
+                  <span>Рабочая почта и ещё контакты</span>
+                  <span class="contactAccordion__chevron" aria-hidden="true">⌄</span>
+                </summary>
+                <div class="contactAccordion__body">
+                  <div class="contactMethod contactMethod--email">
+                    <div class="contactMethod__main">
+                      <a class="contactMethod__number" href="mailto:m.safrutin@sgmautogroup.ru">m.safrutin@sgmautogroup.ru</a>
+                      <span class="contactMethod__label">Рабочая почта</span>
+                    </div>
+                  </div>
+                  <div class="contactMethod">
+                    <div class="contactMethod__main">
+                      <a class="contactMethod__number" href="tel:+79272961107">+7 (927) 296-11-07</a>
+                      <span class="contactMethod__label">Доп. рабочий</span>
+                    </div>
+                    <div class="contactMethod__actions">
+                      <a class="contactQuick" href="tel:+79272961107" aria-label="Позвонить" title="Позвонить" data-tooltip="Позвонить"><img src="./assets/site/phone-logo.svg" alt="" /></a>
+                      <a class="contactQuick" href="https://t.me/max_safrutin_sgm" target="_blank" rel="noreferrer noopener" aria-label="Telegram" title="Telegram" data-tooltip="Telegram"><img src="./assets/site/telegram-logo.svg" alt="" /></a>
+                      <a class="contactQuick" href="https://max.ru/u/f9LHodD0cOKG8uj7UYmHlO_AQH3slMNYWgGfvvIiPKMF0sidhEN-bxuUz4I" target="_blank" rel="noreferrer noopener" aria-label="Max" title="Max" data-tooltip="Max"><img src="./assets/site/logo_max.svg" alt="" /></a>
+                    </div>
+                  </div>
+                  <div class="contactMethod">
+                    <div class="contactMethod__main">
+                      <a class="contactMethod__number" href="tel:+79272651777">+7 (927) 265-17-77</a>
+                      <span class="contactMethod__label">Личный</span>
+                    </div>
+                    <div class="contactMethod__actions">
+                      <a class="contactQuick" href="tel:+79272651777" aria-label="Позвонить" title="Позвонить" data-tooltip="Позвонить"><img src="./assets/site/phone-logo.svg" alt="" /></a>
+                      <a class="contactQuick" href="https://t.me/max_safrutin" target="_blank" rel="noreferrer noopener" aria-label="Telegram" title="Telegram" data-tooltip="Telegram"><img src="./assets/site/telegram-logo.svg" alt="" /></a>
+                      <a class="contactQuick" href="https://max.ru/u/f9LHodD0cOKKZU5YzAy-jy-s9GFJHXWaHHYEv7Bq4vrV8HM_H0nirqXVKRE" target="_blank" rel="noreferrer noopener" aria-label="Max" title="Max" data-tooltip="Max"><img src="./assets/site/logo_max.svg" alt="" /></a>
+                      <a class="contactQuick" href="https://vk.com/max_safrutin" target="_blank" rel="noreferrer noopener" aria-label="VK" title="VK" data-tooltip="VK"><img src="./assets/site/vk-logo.svg" alt="" /></a>
+                    </div>
+                  </div>
+                  <div class="contactMethod">
+                    <div class="contactMethod__main">
+                      <a class="contactMethod__number" href="tel:88002220032">8 (800) 222-00-32</a>
+                      <span class="contactMethod__label">Горячая линия</span>
+                    </div>
+                    <div class="contactMethod__actions">
+                      <a class="contactQuick" href="tel:88002220032" aria-label="Позвонить" title="Позвонить" data-tooltip="Позвонить"><img src="./assets/site/phone-logo.svg" alt="" /></a>
+                    </div>
+                  </div>
+                </div>
+              </details>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <script>
+      (() => {
+        const sections = Array.from(document.querySelectorAll("[data-section]"));
+        const root = document.documentElement;
+        const counter = document.querySelector("[data-counter]");
+        const prevBtn = document.querySelector("[data-prev]");
+        const nextBtn = document.querySelector("[data-next]");
+        const homeBtn = document.querySelector("[data-home]");
+        const menuRoot = document.querySelector("[data-menu-root]");
+        const menuButton = document.querySelector("[data-menu-open]");
+        const navCounter = document.querySelector(".nav__counter");
+        const toc = document.querySelector("[data-toc]");
+        const contactRoot = document.getElementById("contactModalRoot");
+        let activeIndex = 0;
+
+        const getActiveIndex = () => {
+          const midpoint = window.scrollY + window.innerHeight * 0.42;
+          let index = 0;
+          sections.forEach((section, sectionIndex) => {
+            if (section.offsetTop <= midpoint) index = sectionIndex;
+          });
+          return index;
+        };
+
+        const scrollToSection = (index) => {
+          const target = sections[Math.max(0, Math.min(sections.length - 1, index))];
+          if (!target) return;
+          target.scrollIntoView({ behavior: "smooth", block: "start" });
+        };
+
+        const renderToc = () => {
+          toc.innerHTML = sections.map((section, index) => `
+            <a href="#${section.id}" data-toc-link data-index="${index}">
+              <span class="articleToc__num">${index + 1}</span>
+              <span>
+                <span class="articleToc__title">${section.dataset.menuTitle}</span>
+                <span class="articleToc__sub">${section.dataset.menuSub}</span>
+              </span>
+            </a>
+          `).join("");
+        };
+
+        const updateState = () => {
+          const maxScroll = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
+          const progress = Math.min(1, Math.max(0, window.scrollY / maxScroll));
+          root.style.setProperty("--scroll-progress", String(progress));
+          navCounter?.style.setProperty("--progress", String(progress));
+          activeIndex = getActiveIndex();
+          counter.textContent = `${activeIndex + 1} / ${sections.length}`;
+          prevBtn.disabled = activeIndex === 0;
+          nextBtn.disabled = activeIndex === sections.length - 1;
+          document.querySelectorAll("[data-toc-link]").forEach((link) => {
+            link.classList.toggle("is-active", Number(link.dataset.index) === activeIndex);
+          });
+        };
+
+        const openMenu = () => {
+          menuRoot.hidden = false;
+          document.body.classList.add("guide-menu-open");
+          menuButton?.setAttribute("aria-expanded", "true");
+          updateState();
+        };
+
+        const closeMenu = () => {
+          document.body.classList.remove("guide-menu-open");
+          menuButton?.setAttribute("aria-expanded", "false");
+          window.setTimeout(() => {
+            if (!document.body.classList.contains("guide-menu-open")) {
+              menuRoot.hidden = true;
+            }
+          }, 260);
+        };
+
+        const toggleMenu = () => {
+          if (document.body.classList.contains("guide-menu-open")) {
+            closeMenu();
+            return;
+          }
+
+          openMenu();
+        };
+
+        const openContact = () => {
+          contactRoot.hidden = false;
+          document.body.classList.add("modal-open");
+        };
+
+        const closeContact = () => {
+          contactRoot.hidden = true;
+          document.body.classList.remove("modal-open");
+        };
+
+        renderToc();
+        updateState();
+
+        menuButton.addEventListener("click", (event) => {
+          event.preventDefault();
+          toggleMenu();
+        });
+        menuRoot.addEventListener("click", (event) => {
+          const closeTarget = event.target.closest("[data-menu-close]");
+          if (closeTarget) {
+            event.preventDefault();
+            event.stopPropagation();
+            closeMenu();
+            return;
+          }
+
+          const link = event.target.closest("[data-toc-link]");
+          if (link) {
+            event.preventDefault();
+            closeMenu();
+            scrollToSection(Number(link.dataset.index));
+          }
+        });
+
+        prevBtn.addEventListener("click", () => scrollToSection(activeIndex - 1));
+        nextBtn.addEventListener("click", () => scrollToSection(activeIndex + 1));
+        homeBtn.addEventListener("click", () => {
+          window.location.href = "./index.html";
+        });
+
+        document.querySelectorAll("[data-open-contact]").forEach((button) => button.addEventListener("click", openContact));
+        contactRoot.addEventListener("click", async (event) => {
+          if (event.target.closest("[data-contact-close]")) {
+            closeContact();
+            return;
+          }
+
+          if (event.target.closest("[data-share-contact]")) {
+            const url = new URL("./contacts.html", window.location.href).href;
+            if (navigator.share) {
+              await navigator.share({ title: "Максим Сафрутин", url }).catch(() => {});
+            } else if (navigator.clipboard) {
+              await navigator.clipboard.writeText(url).catch(() => {});
+            }
+          }
+        });
+
+        window.addEventListener("scroll", updateState, { passive: true });
+        window.addEventListener("resize", updateState);
+        window.addEventListener("keydown", (event) => {
+          if (event.key === "Escape") {
+            if (!contactRoot.hidden) closeContact();
+            if (!menuRoot.hidden) closeMenu();
+          }
+        });
+      })();
+    </script>
   </body>
 </html>
