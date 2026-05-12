@@ -353,7 +353,7 @@ const HOME_VIEWS = {
     actions: [
       {
         label: "Интерактивная",
-        href: "./about.html",
+        view: "interactiveInDevelopment",
         icon: "presentation",
         accent: true
       },
@@ -367,10 +367,30 @@ const HOME_VIEWS = {
       }
     ]
   },
+  interactiveInDevelopment: {
+    title: "Интерактивная презентация",
+    text: "Этот интерактивный раздел пока в разработке. Мы уже готовим удобную версию внутри сайта, чтобы материал открывался быстро и читался одинаково хорошо на телефоне и компьютере.",
+    note: "PDF-материалы рядом остаются доступными для просмотра, скачивания и пересылки.",
+    noteIcon: "alert",
+    noteAccent: true
+  },
+  grayRisksPdfStub: {
+    title: "Риски серого импорта",
+    text: "Интерактивная версия пока в разработке. Сейчас можно открыть или скачать PDF-материал.",
+    actions: [
+      {
+        label: "Риски серого импорта",
+        href: "./assets/downloads/SGM_Auto_Group_kratko.pdf",
+        downloadHref: "./assets/downloads/SGM_Auto_Group_kratko.pdf",
+        external: true,
+        icon: "filePdf"
+      }
+    ]
+  },
   sanctionImportPdf: {
     title: "Сценарий санкционного импорта",
-    text: "Интерактивный раздел теперь доступен внутри сайта: маршрут сделки, документы, оплата, НДС, утильсбор и риски серых схем.",
-    note: "PDF-файлы оставлены как традиционные материалы для скачивания и пересылки.",
+    text: "Часть интерактивных разделов временно в разработке. PDF-файлы оставлены как традиционные материалы для просмотра, скачивания и пересылки.",
+    note: "Если нажать на интерактивный раздел, появится короткая заглушка о разработке.",
     actions: [
       {
         label: "Сценарий санкционного импорта",
@@ -380,7 +400,7 @@ const HOME_VIEWS = {
       },
       {
         label: "Риски серого импорта",
-        href: "./gray-import-risks.html",
+        view: "grayRisksPdfStub",
         icon: "alert"
       },
       {
@@ -441,7 +461,7 @@ const HOME_VIEWS = {
   },
   importArticlePdf: {
     title: "Как привезти а/м из-за рубежа",
-    text: "Интерактивные разделы по сценарию импорта, рискам серых схем и архитектуре сделки уже доступны. PDF-статья оставлена как традиционный материал.",
+    text: "Интерактивная версия временно в разработке. PDF-статья оставлена как традиционный материал для просмотра, скачивания и пересылки.",
     note: "Для конкретного автомобиля лучше сразу связать сценарий ввоза с менеджером.",
     actions: [
       {
@@ -452,12 +472,12 @@ const HOME_VIEWS = {
       },
       {
         label: "Риски серого импорта",
-        href: "./gray-import-risks.html",
+        view: "grayRisksPdfStub",
         icon: "alert"
       },
       {
         label: "Архитектура безопасной сделки",
-        href: "./deal-structure.html",
+        view: "interactiveInDevelopment",
         icon: "import"
       },
       {
@@ -478,7 +498,7 @@ const HOME_VIEWS = {
   },
   techWorks: {
     title: "Важные нюансы",
-    text: "Разделы с ключевыми нюансами уже открыты: вопросы и ответы, риски серого импорта, проверка предложения продавца, договор и оплата.",
+    text: "Часть интерактивных разделов временно в разработке. Открытые материалы и PDF-файлы оставлены рядом, чтобы ими уже можно было пользоваться.",
     note: "PDF-статья оставлена рядом как дополнительный материал.",
     actions: [
       {
@@ -494,12 +514,12 @@ const HOME_VIEWS = {
       },
       {
         label: "Риски серого импорта",
-        href: "./gray-import-risks.html",
+        view: "grayRisksPdfStub",
         icon: "alert"
       },
       {
         label: "Договор, приемка и зоны внимания",
-        href: "./contract-acceptance.html",
+        view: "interactiveInDevelopment",
         icon: "file"
       },
       {
@@ -889,6 +909,13 @@ const ARTICLE_LANDING_PRESENTATIONS = new Set([
   "ram",
   "contract"
 ]);
+
+const ARTICLE_LANDING_MEDIA = {
+  trust: { folder: "about", prefix: "about image" },
+  "gray-risks": { folder: "gray-import-risks", prefix: "gray-import-risks image" },
+  deal: { folder: "deal-structure", prefix: "Deal-structure image" },
+  contract: { folder: "contract-acceptance", prefix: "Contract-acceptance image" }
+};
 
 function getScenarioBookByIndex(index) {
   const numericIndex = Number(index);
@@ -1374,10 +1401,10 @@ function buildDealArchitecturePopupTemplate() {
     <template id="dealArchitecturePopup">
       <div class="modalActions">
         <div class="modalActionWrap">
-          <a class="modalAction modalAction--accent" href="./deal-structure.html">
+          <button class="modalAction modalAction--accent" type="button" data-presentation-view="interactiveInDevelopment">
             <span class="modalAction__icon" aria-hidden="true">${renderIcon("presentation")}</span>
             <span>Интерактивная презентация</span>
-          </a>
+          </button>
         </div>
         <div class="modalActionWrap modalActionWrap--pdf">
           <a class="modalAction" href="./assets/downloads/SGM_Auto_Group_kratko.pdf" target="_blank" rel="noreferrer noopener">
@@ -1398,10 +1425,10 @@ function buildImportArticlePopupTemplate() {
     <template id="importArticlePopup">
       <div class="modalActions">
         <div class="modalActionWrap">
-          <a class="modalAction modalAction--accent" href="./import-article.html">
+          <button class="modalAction modalAction--accent" type="button" data-presentation-view="interactiveInDevelopment">
             <span class="modalAction__icon" aria-hidden="true">${renderIcon("presentation")}</span>
             <span>Интерактивная презентация</span>
-          </a>
+          </button>
         </div>
         <div class="modalActionWrap modalActionWrap--pdf">
           <a class="modalAction" href="./assets/downloads/Statya.pdf" target="_blank" rel="noreferrer noopener">
@@ -1409,6 +1436,25 @@ function buildImportArticlePopupTemplate() {
             <span>Традиционная презентация</span>
           </a>
           <a class="modalIconAction" href="./assets/downloads/Statya.pdf" download aria-label="Скачать файл">
+            ${renderIcon("download")}
+          </a>
+        </div>
+      </div>
+    </template>
+  `;
+}
+
+function buildGrayRisksPopupTemplate() {
+  return `
+    <template id="grayRisksPopup">
+      <p class="modalText">Интерактивная версия пока в разработке. Сейчас можно открыть или скачать PDF-материал.</p>
+      <div class="modalActions">
+        <div class="modalActionWrap modalActionWrap--pdf">
+          <a class="modalAction" href="./assets/downloads/SGM_Auto_Group_kratko.pdf" target="_blank" rel="noreferrer noopener">
+            <span class="modalAction__icon" aria-hidden="true">${renderIcon("filePdf")}</span>
+            <span>Риски серого импорта</span>
+          </a>
+          <a class="modalIconAction" href="./assets/downloads/SGM_Auto_Group_kratko.pdf" download aria-label="Скачать файл">
             ${renderIcon("download")}
           </a>
         </div>
@@ -1520,10 +1566,10 @@ function buildNuancesOverviewHtml() {
   `;
   const riskCta = `
     <div class="nuancePrimaryAction nuancePrimaryAction--plain">
-      <a class="smartAction smartAction--accent" href="${escapeHtml(normalizeHref(makePresentationHref("gray-risks", 1)))}">
+      <button class="smartAction smartAction--accent" type="button" data-inline-popup="grayRisksPopup" data-inline-popup-title="Риски серого импорта">
         <span class="smartAction__icon" aria-hidden="true">${renderPresentationIcon("AlertTriangle")}</span>
         <span>Риски серого импорта</span>
-      </a>
+      </button>
     </div>
   `;
   const items = [
@@ -1583,6 +1629,7 @@ function buildNuancesOverviewHtml() {
   return `
     ${faqCta}
     ${riskCta}
+    ${buildGrayRisksPopupTemplate()}
     ${buildSellerChecklistPopupTemplate()}
     ${buildDealArchitecturePopupTemplate()}
     ${buildImportArticlePopupTemplate()}
@@ -2715,7 +2762,109 @@ function makeLandingVisualPrompt(heading, text) {
   return `Промт для изображения: деловой премиальный визуал для раздела «${cleanHeading}»${detail}, темный стиль SGM Auto Group, автомобиль, документы и проверяемая сделка.`;
 }
 
-function renderLandingSection(section, index, total, isIntro = false) {
+function getLandingImageSrc(presentationId, sectionIndex, isIntro = false) {
+  if (isIntro) return "";
+  const media = ARTICLE_LANDING_MEDIA[presentationId];
+  if (!media) return "";
+  const fileName = `${media.prefix} ${sectionIndex}.png`;
+  return `./assets/media/${encodeURIComponent(media.folder)}/${encodeURIComponent(fileName)}`;
+}
+
+function createArticleImageLightbox(galleryItems, scrollToSection) {
+  if (!Array.isArray(galleryItems) || galleryItems.length === 0) return;
+
+  const root = document.createElement("div");
+  root.className = "articleImageLightbox";
+  root.hidden = true;
+  root.innerHTML = `
+    <button class="articleImageLightbox__backdrop" type="button" data-lightbox-close aria-label="Закрыть изображение"></button>
+    <div class="articleImageLightbox__panel" role="dialog" aria-modal="true" aria-label="Просмотр изображения">
+      <button class="articleImageLightbox__close" type="button" data-lightbox-close aria-label="Закрыть">×</button>
+      <button class="articleImageLightbox__arrow articleImageLightbox__arrow--prev" type="button" data-lightbox-prev aria-label="Предыдущее изображение">${renderIcon("arrowLeft")}</button>
+      <figure class="articleImageLightbox__figure">
+        <img class="articleImageLightbox__image" alt="" />
+        <figcaption class="articleImageLightbox__caption"></figcaption>
+      </figure>
+      <button class="articleImageLightbox__arrow articleImageLightbox__arrow--next" type="button" data-lightbox-next aria-label="Следующее изображение">${renderIcon("arrowRight")}</button>
+      <div class="articleImageLightbox__counter" aria-live="polite"></div>
+    </div>
+  `;
+  document.body.append(root);
+
+  const image = root.querySelector(".articleImageLightbox__image");
+  const caption = root.querySelector(".articleImageLightbox__caption");
+  const counter = root.querySelector(".articleImageLightbox__counter");
+  let currentIndex = 0;
+  let touchStartX = 0;
+
+  function setIndex(nextIndex, shouldScroll = true) {
+    currentIndex = (nextIndex + galleryItems.length) % galleryItems.length;
+    const item = galleryItems[currentIndex];
+    image.src = item.src;
+    image.alt = item.alt || item.title || "Изображение раздела";
+    caption.textContent = item.title || "";
+    counter.textContent = `${currentIndex + 1} / ${galleryItems.length}`;
+    if (shouldScroll && typeof scrollToSection === "function") {
+      scrollToSection(item.sectionIndex);
+    }
+  }
+
+  function open(index) {
+    setIndex(index, false);
+    root.hidden = false;
+    document.body.classList.add("image-lightbox-open");
+  }
+
+  function close() {
+    root.hidden = true;
+    document.body.classList.remove("image-lightbox-open");
+  }
+
+  galleryItems.forEach((item, index) => {
+    item.figure.addEventListener("click", () => open(index));
+    item.figure.addEventListener("keydown", (event) => {
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        open(index);
+      }
+    });
+  });
+
+  root.addEventListener("click", (event) => {
+    if (event.target.closest("[data-lightbox-close]")) {
+      close();
+      return;
+    }
+    if (event.target.closest("[data-lightbox-prev]")) {
+      setIndex(currentIndex - 1);
+      return;
+    }
+    if (event.target.closest("[data-lightbox-next]")) {
+      setIndex(currentIndex + 1);
+    }
+  });
+
+  root.addEventListener("touchstart", (event) => {
+    touchStartX = event.changedTouches?.[0]?.clientX || 0;
+  }, { passive: true });
+
+  root.addEventListener("touchend", (event) => {
+    const endX = event.changedTouches?.[0]?.clientX || 0;
+    const delta = endX - touchStartX;
+    if (Math.abs(delta) > 46) {
+      setIndex(currentIndex + (delta < 0 ? 1 : -1));
+    }
+  }, { passive: true });
+
+  window.addEventListener("keydown", (event) => {
+    if (root.hidden) return;
+    if (event.key === "Escape") close();
+    if (event.key === "ArrowLeft") setIndex(currentIndex - 1);
+    if (event.key === "ArrowRight") setIndex(currentIndex + 1);
+  });
+}
+
+function renderLandingSection(section, index, total, isIntro = false, presentationId = "") {
   const heading = isIntro ? section.title : section.heading;
   const text = isIntro ? section.text : section.text;
   const note = isIntro ? "" : getLandingPopupText(section);
@@ -2723,6 +2872,7 @@ function renderLandingSection(section, index, total, isIntro = false) {
   const stepLabel = isIntro ? `${total - 1} разделов` : `Раздел ${index}`;
   const tag = isIntro ? "h1" : "h2";
   const id = isIntro ? "intro" : `section-${index}`;
+  const imageSrc = getLandingImageSrc(presentationId, index, isIntro);
 
   return `
     <section class="articleSection" id="${escapeHtml(id)}" data-landing-section data-menu-title="${escapeHtml(heading || "Раздел")}" data-menu-sub="${escapeHtml(stepLabel)}">
@@ -2730,8 +2880,13 @@ function renderLandingSection(section, index, total, isIntro = false) {
         <${tag}>${escapeHtml(heading || "Раздел")}</${tag}>
         <span class="articleStep">${escapeHtml(stepLabel)}</span>
       </header>
-      <figure class="articleVisual">
-        <figcaption class="articleVisual__prompt">${escapeHtml(makeLandingVisualPrompt(heading, text))}</figcaption>
+      <figure class="articleVisual${imageSrc ? " articleVisual--image" : ""}"${imageSrc ? ` data-gallery-item data-section-index="${index}" tabindex="0" role="button" aria-label="Открыть изображение раздела"` : ""}>
+        ${imageSrc ? `
+          <img class="articleVisual__image" src="${escapeHtml(imageSrc)}" alt="${escapeHtml(heading || "Изображение раздела")}" loading="lazy" />
+          <figcaption class="srOnly">${escapeHtml(makeLandingVisualPrompt(heading, text))}</figcaption>
+        ` : `
+          <figcaption class="articleVisual__prompt">${escapeHtml(makeLandingVisualPrompt(heading, text))}</figcaption>
+        `}
       </figure>
       <div class="articleBody">
         ${text ? `<p>${escapeHtml(text)}</p>` : ""}
@@ -2765,7 +2920,7 @@ function initPresentationLanding(config) {
   body.classList.add("article-landing");
   stage.className = "articleShell";
   stage.setAttribute("aria-label", config.title || "Презентация");
-  stage.innerHTML = sections.map((section, index) => renderLandingSection(section, index, sections.length, index === 0)).join("");
+  stage.innerHTML = sections.map((section, index) => renderLandingSection(section, index, sections.length, index === 0, presentationId)).join("");
 
   const guideButton = document.createElement("button");
   guideButton.className = "guideMenuButton";
@@ -2795,6 +2950,18 @@ function initPresentationLanding(config) {
   document.body.append(guideButton, guideRoot);
 
   const renderedSections = Array.from(document.querySelectorAll("[data-landing-section]"));
+  const galleryItems = Array.from(document.querySelectorAll("[data-gallery-item]")).map((figure) => {
+    const image = figure.querySelector(".articleVisual__image");
+    const sectionIndex = Number(figure.dataset.sectionIndex || "0");
+    const section = renderedSections[sectionIndex];
+    return {
+      figure,
+      sectionIndex,
+      src: image?.getAttribute("src") || "",
+      alt: image?.getAttribute("alt") || "",
+      title: section?.dataset.menuTitle || image?.getAttribute("alt") || ""
+    };
+  }).filter((item) => item.src);
   const toc = guideRoot.querySelector("[data-landing-toc]");
   const els = {
     counter: document.getElementById("counter"),
@@ -2844,6 +3011,8 @@ function initPresentationLanding(config) {
     if (!target) return;
     target.scrollIntoView({ behavior: "smooth", block: "start" });
   }
+
+  createArticleImageLightbox(galleryItems, scrollToSection);
 
   function updateState() {
     const maxScroll = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);

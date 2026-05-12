@@ -12,7 +12,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="./assets/theme.css?v=6" />
     <link rel="stylesheet" href="./assets/home.css?v=13" />
-    <link rel="stylesheet" href="./assets/presentation.css?v=24" />
+    <link rel="stylesheet" href="./assets/presentation.css?v=26" />
     <style>
       body.importLanding {
         min-height: 100%;
@@ -205,13 +205,19 @@
 
       .articleVisual--image {
         align-items: stretch;
+        min-height: auto;
+        aspect-ratio: 16 / 10;
+        cursor: zoom-in;
+        background:
+          linear-gradient(145deg, rgba(18, 18, 18, 0.98), rgba(30, 20, 17, 0.96)),
+          radial-gradient(520px 280px at 72% 24%, rgba(241, 213, 171, 0.12), transparent 64%);
       }
 
       .articleVisual__image {
         width: 100%;
         height: 100%;
-        min-height: inherit;
-        object-fit: cover;
+        object-fit: contain;
+        object-position: center;
         display: block;
       }
 
@@ -350,11 +356,16 @@
       }
 
       body.importLanding .nav {
+        position: fixed !important;
+        left: 0 !important;
+        right: 0 !important;
         bottom: 0 !important;
+        width: 100%;
         height: var(--nav-h) !important;
-        transform: translateZ(0);
+        transform: translate3d(0, 0, 0);
         backface-visibility: hidden;
         will-change: transform;
+        contain: layout paint;
       }
 
       .articleCounter {
@@ -404,6 +415,11 @@
         .articleVisual {
           min-height: 196px;
           border-radius: 20px;
+        }
+
+        .articleVisual--image {
+          min-height: auto;
+          aspect-ratio: 16 / 10;
         }
 
         .articleVisual__prompt {
@@ -463,7 +479,7 @@
           <span class="articleStep">7 шагов с учетом нового утильсбора в 2026 году</span>
         </header>
         <figure class="articleVisual articleVisual--image">
-          <img class="articleVisual__image" src="./assets/media/import-article%20image/ChatGPT%20Image%201.png" alt="Премиальная карта маршрута автомобиля из-за рубежа в Россию" />
+          <img class="articleVisual__image" src="./assets/media/import-article%20image/import-article%20image%201.png" alt="Премиальная карта маршрута автомобиля из-за рубежа в Россию" />
           <figcaption class="srOnly">Промт для изображения: премиальная карта маршрута автомобиля из-за рубежа в Россию, аккуратные линии логистики, документы, таможня, современный автомобиль, деловой темный стиль SGM.</figcaption>
         </figure>
         <div class="articleBody"></div>
@@ -475,7 +491,7 @@
           <span class="articleStep">1 шаг</span>
         </header>
         <figure class="articleVisual articleVisual--image">
-          <img class="articleVisual__image" src="./assets/media/import-article%20image/ChatGPT%20Image%202.png" alt="Экран выбора автомобиля на классифайдах" />
+          <img class="articleVisual__image" src="./assets/media/import-article%20image/import-article%20image%202.png" alt="Экран выбора автомобиля на классифайдах" />
           <figcaption class="srOnly">Промт для изображения: экран выбора автомобиля как на классифайдах Avito, Auto.ru и mobile.de, карточки машин, фильтры, цена, год, пробег, без логотипов крупным планом, деловой стиль.</figcaption>
         </figure>
         <div class="articleBody">
@@ -502,7 +518,7 @@
           <span class="articleStep">2 шаг</span>
         </header>
         <figure class="articleVisual articleVisual--image">
-          <img class="articleVisual__image" src="./assets/media/import-article%20image/ChatGPT%20Image%203.png" alt="Страны поставки автомобиля и маршруты" />
+          <img class="articleVisual__image" src="./assets/media/import-article%20image/import-article%20image%203.png" alt="Страны поставки автомобиля и маршруты" />
           <figcaption class="srOnly">Промт для изображения: аккуратные флаги ОАЭ, Китая (КНР), США и Европы рядом с силуэтом автомобиля и линиями маршрутов поставки, премиальный темный фон.</figcaption>
         </figure>
         <div class="articleBody">
@@ -517,7 +533,7 @@
           <span class="articleStep">3 шаг</span>
         </header>
         <figure class="articleVisual articleVisual--image">
-          <img class="articleVisual__image" src="./assets/media/import-article%20image/ChatGPT%20Image%204.png" alt="Проверка компании-поставщика перед оплатой" />
+          <img class="articleVisual__image" src="./assets/media/import-article%20image/import-article%20image%204.png" alt="Проверка компании-поставщика перед оплатой" />
           <figcaption class="srOnly">Промт для изображения: проверка компании-поставщика на ноутбуке, карточка юрлица, суды, обороты, отзывы клиентов, значок подтверждения, спокойный деловой стиль.</figcaption>
         </figure>
         <div class="articleBody">
@@ -531,8 +547,9 @@
           <h2>Проверить авто</h2>
           <span class="articleStep">4 шаг</span>
         </header>
-        <figure class="articleVisual">
-          <figcaption class="articleVisual__prompt">Промт для изображения: инспекция автомобиля перед покупкой, толщиномер на кузове, видеоосмотр VIN и салона, чек-лист состояния, реалистичная автомобильная съемка.</figcaption>
+        <figure class="articleVisual articleVisual--image">
+          <img class="articleVisual__image" src="./assets/media/import-article%20image/import-article%20image%205.png" alt="Проверка автомобиля перед покупкой" />
+          <figcaption class="srOnly">Промт для изображения: инспекция автомобиля перед покупкой, толщиномер на кузове, видеоосмотр VIN и салона, чек-лист состояния, реалистичная автомобильная съемка.</figcaption>
         </figure>
         <div class="articleBody">
           <p>Перед покупкой важно убедиться в реальном состоянии автомобиля. Запросите у поставщика местный аналог автотеки, видео с толщиномером в круг и подробное видео: от шильдика, затем кузов, салон и VIN на стекле или под капотом.</p>
@@ -545,8 +562,9 @@
           <h2>Договор и оплата</h2>
           <span class="articleStep">5 шаг</span>
         </header>
-        <figure class="articleVisual">
-          <figcaption class="articleVisual__prompt">Промт для изображения: договор купли-продажи автомобиля, график платежей, банковский перевод, подпись, печать, спокойная юридическая сцена без перегруза.</figcaption>
+        <figure class="articleVisual articleVisual--image">
+          <img class="articleVisual__image" src="./assets/media/import-article%20image/import-article%20image%206.png" alt="Договор и оплата автомобиля из-за рубежа" />
+          <figcaption class="srOnly">Промт для изображения: договор купли-продажи автомобиля, график платежей, банковский перевод, подпись, печать, спокойная юридическая сцена без перегруза.</figcaption>
         </figure>
         <div class="articleBody">
           <p>Это самый важный этап с точки зрения рисков.</p>
@@ -560,8 +578,9 @@
           <h2>Доставка и таможня</h2>
           <span class="articleStep">6 шаг</span>
         </header>
-        <figure class="articleVisual">
-          <figcaption class="articleVisual__prompt">Промт для изображения: автомобиль в закрытой перевозке, международный маршрут, таможенный пост, документы, платежи, аккуратная схема движения до России.</figcaption>
+        <figure class="articleVisual articleVisual--image">
+          <img class="articleVisual__image" src="./assets/media/import-article%20image/import-article%20image%207.png" alt="Доставка и таможенное оформление автомобиля" />
+          <figcaption class="srOnly">Промт для изображения: автомобиль в закрытой перевозке, международный маршрут, таможенный пост, документы, платежи, аккуратная схема движения до России.</figcaption>
         </figure>
         <div class="articleBody">
           <p>На этом этапе автомобиль проходит международную доставку, таможенное оформление, оплату пошлин и нового утильсбора.</p>
@@ -574,8 +593,9 @@
           <h2>Получение авто и постановка на учет</h2>
           <span class="articleStep">7 шаг</span>
         </header>
-        <figure class="articleVisual">
-          <figcaption class="articleVisual__prompt">Промт для изображения: выдача автомобиля клиенту, проверка VIN, толщиномер, ключи, документы и номерной знак, деловая премиальная атмосфера.</figcaption>
+        <figure class="articleVisual articleVisual--image">
+          <img class="articleVisual__image" src="./assets/media/import-article%20image/import-article%20image%208.png" alt="Получение автомобиля и постановка на учет" />
+          <figcaption class="srOnly">Промт для изображения: выдача автомобиля клиенту, проверка VIN, толщиномер, ключи, документы и номерной знак, деловая премиальная атмосфера.</figcaption>
         </figure>
         <div class="articleBody">
           <p>При получении автомобиля сверьте VIN-номер, проверьте пробег, осмотрите кузов толщиномером, заведите автомобиль и выполните тест-драйв.</p>
@@ -588,8 +608,9 @@
           <h2>Сохраните этот гайд</h2>
           <span class="articleStep">Он поможет избежать ошибок</span>
         </header>
-        <figure class="articleVisual">
-          <figcaption class="articleVisual__prompt">Промт для изображения: человек сохраняет чек-лист импорта автомобиля в телефоне, рядом автомобиль, документы и спокойный менеджерский контакт, премиальный темный стиль.</figcaption>
+        <figure class="articleVisual articleVisual--image">
+          <img class="articleVisual__image" src="./assets/media/import-article%20image/import-article%20image%209.png" alt="Сохранить гид и получить консультацию" />
+          <figcaption class="srOnly">Промт для изображения: человек сохраняет чек-лист импорта автомобиля в телефоне, рядом автомобиль, документы и спокойный менеджерский контакт, премиальный темный стиль.</figcaption>
         </figure>
         <div class="articleBody">
           <p class="articleNote articleNote--loud"><span class="articleNote__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a4 4 0 0 1-4 4H8l-5 3V7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4Z"></path><path d="M8 10h8"></path><path d="M8 14h5"></path></svg></span><span class="articleNote__content">А если Вы не хотите тратить свое время, нажмите кнопку бесплатная консультация, и наш менеджер все сделает за Вас.</span></p>
@@ -745,6 +766,101 @@
           target.scrollIntoView({ behavior: "smooth", block: "start" });
         };
 
+        const initImageLightbox = () => {
+          const gallery = Array.from(document.querySelectorAll(".articleVisual--image")).map((figure) => {
+            const section = figure.closest("[data-section]");
+            const image = figure.querySelector(".articleVisual__image");
+            return {
+              figure,
+              sectionIndex: sections.indexOf(section),
+              title: section?.dataset.menuTitle || image?.alt || "",
+              src: image?.getAttribute("src") || "",
+              alt: image?.alt || ""
+            };
+          }).filter((item) => item.src && item.sectionIndex >= 0);
+
+          if (!gallery.length) return;
+
+          const arrowLeft = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"></path></svg>';
+          const arrowRight = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"></path></svg>';
+          const root = document.createElement("div");
+          root.className = "articleImageLightbox";
+          root.hidden = true;
+          root.innerHTML = `
+            <button class="articleImageLightbox__backdrop" type="button" data-lightbox-close aria-label="Закрыть изображение"></button>
+            <div class="articleImageLightbox__panel" role="dialog" aria-modal="true" aria-label="Просмотр изображения">
+              <button class="articleImageLightbox__close" type="button" data-lightbox-close aria-label="Закрыть">×</button>
+              <button class="articleImageLightbox__arrow articleImageLightbox__arrow--prev" type="button" data-lightbox-prev aria-label="Предыдущее изображение">${arrowLeft}</button>
+              <figure class="articleImageLightbox__figure">
+                <img class="articleImageLightbox__image" alt="" />
+                <figcaption class="articleImageLightbox__caption"></figcaption>
+              </figure>
+              <button class="articleImageLightbox__arrow articleImageLightbox__arrow--next" type="button" data-lightbox-next aria-label="Следующее изображение">${arrowRight}</button>
+              <div class="articleImageLightbox__counter" aria-live="polite"></div>
+            </div>
+          `;
+          document.body.append(root);
+
+          const image = root.querySelector(".articleImageLightbox__image");
+          const caption = root.querySelector(".articleImageLightbox__caption");
+          const lightboxCounter = root.querySelector(".articleImageLightbox__counter");
+          let current = 0;
+          let touchStartX = 0;
+
+          const setImage = (index, shouldScroll = true) => {
+            current = (index + gallery.length) % gallery.length;
+            const item = gallery[current];
+            image.src = item.src;
+            image.alt = item.alt || item.title;
+            caption.textContent = item.title;
+            lightboxCounter.textContent = `${current + 1} / ${gallery.length}`;
+            if (shouldScroll) scrollToSection(item.sectionIndex);
+          };
+
+          const open = (index) => {
+            setImage(index, false);
+            root.hidden = false;
+            document.body.classList.add("image-lightbox-open");
+          };
+
+          const close = () => {
+            root.hidden = true;
+            document.body.classList.remove("image-lightbox-open");
+          };
+
+          gallery.forEach((item, index) => {
+            item.figure.tabIndex = 0;
+            item.figure.setAttribute("role", "button");
+            item.figure.setAttribute("aria-label", "Открыть изображение раздела");
+            item.figure.addEventListener("click", () => open(index));
+            item.figure.addEventListener("keydown", (event) => {
+              if (event.key === "Enter" || event.key === " ") {
+                event.preventDefault();
+                open(index);
+              }
+            });
+          });
+
+          root.addEventListener("click", (event) => {
+            if (event.target.closest("[data-lightbox-close]")) close();
+            if (event.target.closest("[data-lightbox-prev]")) setImage(current - 1);
+            if (event.target.closest("[data-lightbox-next]")) setImage(current + 1);
+          });
+          root.addEventListener("touchstart", (event) => {
+            touchStartX = event.changedTouches?.[0]?.clientX || 0;
+          }, { passive: true });
+          root.addEventListener("touchend", (event) => {
+            const delta = (event.changedTouches?.[0]?.clientX || 0) - touchStartX;
+            if (Math.abs(delta) > 46) setImage(current + (delta < 0 ? 1 : -1));
+          }, { passive: true });
+          window.addEventListener("keydown", (event) => {
+            if (root.hidden) return;
+            if (event.key === "Escape") close();
+            if (event.key === "ArrowLeft") setImage(current - 1);
+            if (event.key === "ArrowRight") setImage(current + 1);
+          });
+        };
+
         const renderToc = () => {
           toc.innerHTML = sections.map((section, index) => `
             <a href="#${section.id}" data-toc-link data-index="${index}">
@@ -808,6 +924,7 @@
         };
 
         renderToc();
+        initImageLightbox();
         updateState();
 
         menuButton.addEventListener("click", (event) => {
